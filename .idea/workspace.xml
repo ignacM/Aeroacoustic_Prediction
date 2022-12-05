@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bd522123-228b-43e4-86a8-023a5cb99b76" name="Changes" comment="" />
+    <list default="true" id="bd522123-228b-43e4-86a8-023a5cb99b76" name="Changes" comment="ADD Created project">
+      <change afterPath="$PROJECT_DIR$/Data/df_azimuthal.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Data/df_polar.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_preprocessing.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/data_preprocessing.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/decision_tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/decision_tree.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,6 +22,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -32,9 +43,14 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/ignac/PycharmProjects/Aeroacoustic_Prediction"
+    "last_opened_file_path": "C:/Users/ignac/PycharmProjects/AECOM_road_data_analysis"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ignac\PycharmProjects\Aeroacoustic_Prediction\Data" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -48,8 +64,16 @@
       <workItem from="1669858720543" duration="3930000" />
       <workItem from="1669896902765" duration="2923000" />
       <workItem from="1669924554876" duration="1066000" />
-      <workItem from="1670203396305" duration="4628000" />
+      <workItem from="1670203396305" duration="7865000" />
     </task>
+    <task id="LOCAL-00001" summary="ADD Created project">
+      <created>1670209834895</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1670209834895</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -66,6 +90,10 @@
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="ADD Created project" />
+    <option name="LAST_COMMIT_MESSAGE" value="ADD Created project" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -76,5 +104,8 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Aeroacoustic_Prediction$decision_tree.coverage" NAME="decision_tree Coverage Results" MODIFIED="1670212061371" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

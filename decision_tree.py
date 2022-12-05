@@ -1,38 +1,19 @@
 import pandas as pd
-
-from sklearn.preprocessing import scale
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeRegressor
+from sklearn.model_selection import RandomizedSearchCV
+from sklearn.metrics import mean_squared_error
+from sklearn.metrics import mean_absolute_error as mae
 
-"""Load and Visualize Data"""
-
-path = '\Data\preliminary_data.xlsx'
-
-df = pd.read_excel(path, sep=',')
-df.describe()
-df.head()
-
-# Scaling data
-Xs = scale(X)
-Ys = scale(Y)
-from sklearn.decomposition import PCA
-
-feature_names = list(X.columns)
-pca = PCA(n_components=4)
-Xs_pca = pca.fit_transform(Xs)
-# Only retain the first two modes of PCA as the new features
-PCA_df = pd.DataFrame()
-PCA_df['PCA_1'] = Xs_pca[:, 0]
-PCA_df['PCA_2'] = Xs_pca[:, 1]
-
-
-def runTree():
+def runTree(X,Y):
     # Splitting test and train data into 10%
-    xtrain, xtest, ytrain, ytest = train_test_split(Xs_pca, Ys, test_size=0.10)
+    xtrain, xtest, ytrain, ytest = train_test_split(X, Y, test_size=0.10)
     # Finding an optimized decision tree
     # Using max_depth, criterion will suffice for DT Models, rest all will remain constant
-    parameters = {'max_depth': (9, 11)
+    parameters = {'max_depth': (13,15)
         , 'max_features': ('sqrt', 'log2')
-        , 'min_samples_split': (2, 4)
+        , 'min_samples_split': (6, 8)
                   }
 
     dtr_grid = RandomizedSearchCV(DecisionTreeRegressor(), param_distributions=parameters, cv=5, verbose=True)
