@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bd522123-228b-43e4-86a8-023a5cb99b76" name="Changes" comment="ADD Created project">
-      <change afterPath="$PROJECT_DIR$/Data/df_azimuthal.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data/df_polar.csv" afterDir="false" />
+    <list default="true" id="bd522123-228b-43e4-86a8-023a5cb99b76" name="Changes" comment="ADD new branch with modified dataset">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_preprocessing.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/data_preprocessing.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decision_tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/decision_tree.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,14 +34,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/ignac/PycharmProjects/AECOM_road_data_analysis"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ignac/PycharmProjects/AECOM_road_data_analysis&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\ignac\PycharmProjects\Aeroacoustic_Prediction\Data" />
@@ -64,7 +60,8 @@
       <workItem from="1669858720543" duration="3930000" />
       <workItem from="1669896902765" duration="2923000" />
       <workItem from="1669924554876" duration="1066000" />
-      <workItem from="1670203396305" duration="7865000" />
+      <workItem from="1670203396305" duration="8142000" />
+      <workItem from="1670249864862" duration="10000" />
     </task>
     <task id="LOCAL-00001" summary="ADD Created project">
       <created>1670209834895</created>
@@ -73,7 +70,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670209834895</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="ADD new branch with modified dataset">
+      <created>1670213489914</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1670213489914</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -92,7 +96,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="ADD Created project" />
-    <option name="LAST_COMMIT_MESSAGE" value="ADD Created project" />
+    <MESSAGE value="ADD new branch with modified dataset" />
+    <option name="LAST_COMMIT_MESSAGE" value="ADD new branch with modified dataset" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
