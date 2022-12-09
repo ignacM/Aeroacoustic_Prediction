@@ -41,35 +41,6 @@ def runTree(X, Y):
     print("R-squared:", score)
 
 
-
-    """
-
-    param_grid = {'max_depth': np.arange(1, 19)
-        , 'max_features': ('sqrt', 'log2')
-        , 'min_samples_split': np.arange(2, 10)
-                  }
-
-    model = model_selection.GridSearchCV(estimator=regressor, param_grid=param_grid, verbose=10, n_jobs=1, cv=5)
-    model.fit(xtrain, ytrain)
-    print(model.best_score_)
-    print(model.best_estimator_.get_params())
-
-    # train DT classifier for each ccp_alpha value
-
-    # Re-build the model with best estimated tree
-    best_model = model.best_estimator_
-    tree = best_model
-    tree.fit(xtrain, ytrain)
-
-    print(f'Train Accuracy - : {tree.score(xtrain, ytrain):.3f}')
-    print(f'Test Accuracy - : {tree.score(xtest, ytest):.3f}')
-    score = tree.score(xtrain, ytrain)
-    print("R-squared:", score)
-
-    ypred = tree.predict(xtest)
-
-    """
-
     fig, ax = plt.subplots(figsize=(8, 12))
 
     fig.suptitle('Predicted vs Actual', fontweight="bold", fontsize=15)
@@ -99,5 +70,17 @@ def runTree(X, Y):
     plt.ylabel("Predicted value")
     plt.suptitle("Evaluation of Decision Tree")
     plt.title("Mean squared error: " + str(error_value))
+    plt.grid(True)
+    plt.show()
+
+    fig, ax = plt.subplots(figsize=(8, 12))
+    # Plotting test vs predicted data
+    x_ax = range(len(ytest))
+    plt.plot(x_ax, ytest, linewidth=1, label="original")
+    plt.plot(x_ax, ypred, linewidth=1.1, label="predicted")
+    plt.title("y-test and y-predicted data")
+    plt.xlabel('X-axis')
+    plt.ylabel('Y-axis')
+    plt.legend(loc='best', fancybox=True, shadow=True)
     plt.grid(True)
     plt.show()
