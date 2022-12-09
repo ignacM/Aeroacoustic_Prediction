@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bd522123-228b-43e4-86a8-023a5cb99b76" name="Changes" comment="Train/test accuracy">
-      <change afterPath="$PROJECT_DIR$/Run_model.py" afterDir="false" />
+    <list default="true" id="bd522123-228b-43e4-86a8-023a5cb99b76" name="Changes" comment="Created Run model + optimized overfitted tree">
+      <change afterPath="$PROJECT_DIR$/decision_tree2.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_preprocessing.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/data_preprocessing.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Run_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/Run_model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/decision_tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/decision_tree.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -94,7 +94,7 @@
       <workItem from="1670518528098" duration="10677000" />
       <workItem from="1670537994825" duration="9000" />
       <workItem from="1670538236306" duration="5703000" />
-      <workItem from="1670549805122" duration="1806000" />
+      <workItem from="1670549805122" duration="4043000" />
     </task>
     <task id="LOCAL-00001" summary="ADD Created project">
       <created>1670209834895</created>
@@ -117,7 +117,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670251246724</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Created Run model + optimized overfitted tree">
+      <created>1670551897381</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1670551897381</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -170,7 +177,8 @@
     <MESSAGE value="ADD Created project" />
     <MESSAGE value="ADD new branch with modified dataset" />
     <MESSAGE value="ADD visualize df" />
-    <option name="LAST_COMMIT_MESSAGE" value="ADD visualize df" />
+    <MESSAGE value="Created Run model + optimized overfitted tree" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created Run model + optimized overfitted tree" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -184,7 +192,7 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Aeroacoustic_Prediction$Run_model.coverage" NAME="Run_model Coverage Results" MODIFIED="1670550596981" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Aeroacoustic_Prediction$Run_model.coverage" NAME="Run_model Coverage Results" MODIFIED="1670553864467" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Aeroacoustic_Prediction$decision_tree.coverage" NAME="decision_tree Coverage Results" MODIFIED="1670536426547" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

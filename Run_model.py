@@ -3,7 +3,7 @@ import matplotlib as plt
 from sklearn import preprocessing
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import scale
-from decision_tree import runTree
+from decision_tree_final import runTree
 
 
 path = 'Data\preliminary_data_2.xlsx'

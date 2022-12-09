@@ -13,18 +13,73 @@ from sklearn.metrics import mean_absolute_error as mae
 from sklearn.metrics import mean_squared_error, r2_score
 from sklearn.model_selection import cross_val_score
 
-def runTree(X,Y):
+
+def runTree(X, Y):
     # Splitting test and train data into test_size %
     xtrain, xtest, ytrain, ytest = train_test_split(X, Y, test_size=0.20)
     # Finding an optimized decision tree
     # Using max_depth, criterion will suffice for DT Models, rest all will remain constant
-    parameters = {'max_depth': np.arange(1,19)
+    parameters = {'max_depth': np.arange(1, 19)
         , 'max_features': ('sqrt', 'log2')
         , 'min_samples_split': np.arange(1, 10)
                   }
 
-    regressor = DecisionTreeRegressor()
-    param_grid = {'max_depth': np.arange(1,19)
+    """ BASELINE TREE """
+    tree = DecisionTreeRegressor(random_state=42)
+    tree.fit(xtrain, ytrain)
+    ypred = tree.predict(xtest)
+    # Evaluation metrics
+    mse = mean_squared_error(ytest, ypred)
+    rmse = mean_squared_error(ytest, ypred) ** (1 / 2.0)
+    MAE = mae(ytest, ypred)
+    print("MSE: ", mse)
+    print("RMSE: ", rmse)
+    print("MAE:", MAE)
+    print(f'Train Accuracy - : {tree.score(xtrain, ytrain):.3f}')
+    print(f'Test Accuracy - : {tree.score(xtest, ytest):.3f}')
+    score = tree.score(xtrain, ytrain)
+    print("R-squared:", score)
+
+    ParameterGrid = {"min_samples_split": np.arange(0.025, 1, 0.025)}
+
+    min_samples_split_gsearch = GridSearchCV(estimator=tree, param_grid=ParameterGrid, cv=5)
+
+    min_samples_split_gsearch.fit(xtrain, ytrain)
+
+    min_samples_split_gsearch.best_params_
+    best_min_samples_split_tree = min_samples_split_gsearch.best_estimator_
+    print(best_min_samples_split_tree)
+
+    ypred = min_samples_split_gsearch.predict(xtest)
+
+    ParameterGrid = {"max_depth": np.arange(3, 10, 1)}
+
+    depth_gsearch = GridSearchCV(estimator=tree, param_grid=ParameterGrid, cv=5)
+
+    depth_gsearch.fit(xtrain, ytrain)
+
+    depth_gsearch.best_params_
+    depth_tree = depth_gsearch.best_estimator_
+    print(depth_tree)
+
+
+    # Evaluation metrics
+    mse = mean_squared_error(ytest, ypred)
+    rmse = mean_squared_error(ytest, ypred) ** (1 / 2.0)
+    MAE = mae(ytest, ypred)
+    print("MSE: ", mse)
+    print("RMSE: ", rmse)
+    print("MAE:", MAE)
+    print(f'Train Accuracy - : {min_samples_split_gsearch.score(xtrain, ytrain):.3f}')
+    print(f'Test Accuracy - : {min_samples_split_gsearch.score(xtest, ytest):.3f}')
+    score = min_samples_split_gsearch.score(xtrain, ytrain)
+    print("R-squared:", score)
+
+
+
+    """
+
+    param_grid = {'max_depth': np.arange(1, 19)
         , 'max_features': ('sqrt', 'log2')
         , 'min_samples_split': np.arange(2, 10)
                   }
@@ -47,7 +102,7 @@ def runTree(X,Y):
     print("R-squared:", score)
 
     ypred = tree.predict(xtest)
-    
+
     # Evaluation metrics
     mse = mean_squared_error(ytest, ypred)
     rmse = mean_squared_error(ytest, ypred) ** (1 / 2.0)
@@ -65,6 +120,7 @@ def runTree(X,Y):
     l2_pred = l2.predict(xtest)
     print("Ridge RMSE for test data :", mean_squared_error(ytest, l2_pred, squared=False))
     print("Ridge R2 score for test:", r2_score(ytest, l2_pred))
+    """
 
     fig, ax = plt.subplots(figsize=(8, 12))
 
@@ -72,9 +128,9 @@ def runTree(X,Y):
 
     ### Tree
     ax = sns.regplot(ax=ax, x=ypred, y=ytest, label='predicted',
-                          color='darkcyan',
-                          scatter_kws={'alpha': 0.5},
-                          line_kws={'color': 'red', 'lw': 1, 'alpha': 0.8})
+                     color='darkcyan',
+                     scatter_kws={'alpha': 0.5},
+                     line_kws={'color': 'red', 'lw': 1, 'alpha': 0.8})
 
     # Plot 45 degree line
     ax.plot(ytest, ytest, ls='solid', c='grey', label='actual')
@@ -84,59 +140,3 @@ def runTree(X,Y):
     ax.set_xlabel('')
     ax.set_ylabel('True values')
     plt.show()
-
-    fig, ax = plt.subplots(figsize=(8, 12))
-    fig.suptitle('Figures', fontweight="bold", fontsize=15)
-
-    ax= sns.residplot(ax=ax, x=ypred, y=ytest,
-                            lowess=True,
-                            color='darkcyan',
-                            scatter_kws={'alpha': 0.5},
-                            line_kws={'color': 'red', 'lw': 1, 'alpha': 0.8})
-
-    ax.set_title('')
-    ax.set_xlabel('ypred')
-    ax.set_ylabel('ytest')
-    plt.show()
-
-    """
-    # Plotting test vs predicted data
-    x_ax = range(len(ytest))
-    axes[1] = plt.plot(x_ax, ytest, linewidth=1, label="original")
-    axes[1] = plt.plot(x_ax, ypred, linewidth=1.1, label="predicted")
-    axes[1] = plt.title("y-test and y-predicted data")
-    axes[1] = plt.xlabel('X-axis')
-    axes[1] = plt.ylabel('Y-axis')
-    axes[1] = plt.legend(loc='best', fancybox=True, shadow=True)
-    axes[1] = plt.grid(True)
-    plt.show()
-    """
-    """
-    ############
-    error_value = metrics.mean_squared_error(ytest, ypred)
-    plt.subplot()
-    sns.regplot(x=ytest, y=ypred, fit_reg=True)
-    sns.regplot(x=ytest, y=ytest, fit_reg=True, color="Red")
-    plt.xticks(range(0, 10))
-    plt.yticks(range(0, 10))
-    plt.legend(["Prediction", "Actual data"])
-    plt.xlabel("Real value")
-    plt.ylabel("Predicted value")
-    plt.suptitle("Evaluation of Decision Tree")
-    plt.title("Mean squared error: " + str(error_value))
-    plt.grid(True)
-    plt.show()
-
-    n_folds = 5
-    regr = dtr
-    cv_error = np.average(cross_val_score(regr, X, Y, scoring='neg_mean_squared_error', cv=n_folds))
-    print("Cross Validation: {}".format(cv_error))
-    regr.fit(xtrain, ytrain)
-    y_pred = regr.predict(xtest)
-    y_train_pred = regr.predict(xtrain)
-    print("Mean squared error testing data: {}".format(mean_squared_error(ytest, y_pred)))
-    print("Mean squared error training data: {}".format(mean_squared_error(ytrain, y_train_pred)))
-    plt.scatter(ytest, y_pred, marker='o')
-    sns.regplot(x=ytest, y=ypred, fit_reg=True)
-    plt.show()"""
-
