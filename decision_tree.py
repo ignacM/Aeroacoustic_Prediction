@@ -14,129 +14,86 @@ from sklearn.metrics import mean_squared_error, r2_score
 from sklearn.model_selection import cross_val_score
 
 def runTree(X,Y):
-    # Splitting test and train data into test_size %
+    # Splitting test and train data into test_size 20%
     xtrain, xtest, ytrain, ytest = train_test_split(X, Y, test_size=0.20)
-    # Finding an optimized decision tree
     # Using max_depth, criterion will suffice for DT Models, rest all will remain constant
-    parameters = {'max_depth': np.arange(1,19)
+    optimizable_parameters_list = {'max_depth': np.arange(1, 19)
         , 'max_features': ('sqrt', 'log2')
         , 'min_samples_split': np.arange(1, 10)
                   }
 
     regressor = DecisionTreeRegressor()
-    param_grid = {'max_depth': np.arange(1,19)
-        , 'max_features': ('sqrt', 'log2')
-        , 'min_samples_split': np.arange(2, 10)
+    param_grid = {'max_depth': np.arange(1, 10),
+                  'min_samples_split': np.arange(2, 10)
                   }
 
     model = model_selection.GridSearchCV(estimator=regressor, param_grid=param_grid, verbose=10, n_jobs=1, cv=5)
     model.fit(xtrain, ytrain)
-    print(model.best_score_)
-    print(model.best_estimator_.get_params())
-
-    # train DT classifier for each ccp_alpha value
+    """print(model.best_score_)
+    print(model.best_estimator_.get_params())"""
 
     # Re-build the model with best estimated tree
     best_model = model.best_estimator_
+
     tree = best_model
-    tree.fit(xtrain, ytrain)
-
-    print(f'Train Accuracy - : {tree.score(xtrain, ytrain):.3f}')
-    print(f'Test Accuracy - : {tree.score(xtest, ytest):.3f}')
-    score = tree.score(xtrain, ytrain)
-    print("R-squared:", score)
-
+    print_regression_solutions(xtrain, ytrain, xtest, ytest, tree, 'Decision Tree')
     ypred = tree.predict(xtest)
-    
+    plot_regression_outcome(ytest, ypred, 'Decision Tree')
+
+    l2 = Ridge(alpha=0.01)
+    print_regression_solutions(xtrain, ytrain, xtest, ytest, l2, 'Ridge Regression')
+    l2_pred = l2.predict(xtest)
+    plot_regression_outcome(ytest, l2_pred, 'Ridge Regression')
+
+    print_regression_residuals(ytest, ypred, 'Decision Tree')
+    return
+
+
+def plot_regression_outcome(ytest, ypred, method):
+    fig, ax = plt.subplots(figsize=(8, 6))
+    plt.suptitle('Predicted vs Actual for %s' % method, fontweight="bold", fontsize=15)
+    error_value = round(metrics.mean_absolute_error(ytest, ypred), 2)
+    plt.subplot()
+    sns.regplot(x=ytest, y=ypred, fit_reg=True, color='red') # fit_reg prints the area
+    sns.regplot(x=ytest, y=ytest, fit_reg=True, color='black')
+    plt.legend(["Prediction points", "Prediction best fit", "Area", "Actual point", "Actual line"])
+    plt.xlabel("Real value")
+    plt.ylabel("Predicted value")
+    plt.title("Mean absolute error: %.2f" % error_value)
+    plt.grid(True)
+    plt.show()
+
     # Evaluation metrics
     mse = mean_squared_error(ytest, ypred)
     rmse = mean_squared_error(ytest, ypred) ** (1 / 2.0)
     MAE = mae(ytest, ypred)
-    print("MSE: ", mse)
-    print("RMSE: ", rmse)
-    print("MAE:", MAE)
+    print("%s MSE: " % method, mse)
+    print("%s RMSE: " % method, rmse)
+    print("%s MAE:" % method, MAE)
 
-    l2 = Ridge(alpha=0.01)
-    l2.fit(xtrain, ytrain)
-    l2_pred = l2.predict(xtrain)
-    print("Ridge RMSE for train data :", mean_squared_error(ytrain, l2_pred, squared=False))
-    print("Ridge R2 score for train:", r2_score(ytrain, l2_pred))
+    return
+
+
+def print_regression_solutions(xtrain, ytrain, xtest, ytest, model, method):
+    model.fit(xtrain, ytrain)
     print(" ")
-    l2_pred = l2.predict(xtest)
-    print("Ridge RMSE for test data :", mean_squared_error(ytest, l2_pred, squared=False))
-    print("Ridge R2 score for test:", r2_score(ytest, l2_pred))
+    print(f'%s Train Accuracy - : {model.score(xtrain, ytrain):.3f}' % method)
+    print(f'%s Test Accuracy - : {model.score(xtest, ytest):.3f}' % method)
+    score = model.score(xtrain, ytrain)
+    print("%s R-squared:" % method, score)
+    print(" ")
+    return
 
-    fig, ax = plt.subplots(figsize=(8, 12))
 
-    fig.suptitle('Predicted vs Actual', fontweight="bold", fontsize=15)
-
-    ### Tree
-    ax = sns.regplot(ax=ax, x=ypred, y=ytest, label='predicted',
-                          color='darkcyan',
-                          scatter_kws={'alpha': 0.5},
-                          line_kws={'color': 'red', 'lw': 1, 'alpha': 0.8})
-
-    # Plot 45 degree line
-    ax.plot(ytest, ytest, ls='solid', c='grey', label='actual')
-    ax.plot()
-    # Labels
-    ax.set_title('Linear Regression')
-    ax.set_xlabel('')
-    ax.set_ylabel('True values')
+def print_regression_residuals(ytest, ypred, method):
+    fig, ax = plt.subplots(figsize=(8, 6))
+    fig.suptitle('Residual Plot for %s' % method, fontweight="bold", fontsize=15)
+    residuals = ytest - ypred
+    ax = sns.residplot(ax=ax, x=ypred, y=residuals, lowess=True, color='darkcyan',
+                       scatter_kws={'alpha': 0.5},
+                       line_kws={'color': 'red', 'lw': 1, 'alpha': 0.8})
+    plt.legend(["", "Predicted values", "Actual values line"])
+    ax.set_xlabel('Sound Pressure Level, (dB)')
+    ax.set_ylabel('Decibel Error in predicted values using %s' % method)
     plt.show()
-
-    fig, ax = plt.subplots(figsize=(8, 12))
-    fig.suptitle('Figures', fontweight="bold", fontsize=15)
-
-    ax= sns.residplot(ax=ax, x=ypred, y=ytest,
-                            lowess=True,
-                            color='darkcyan',
-                            scatter_kws={'alpha': 0.5},
-                            line_kws={'color': 'red', 'lw': 1, 'alpha': 0.8})
-
-    ax.set_title('')
-    ax.set_xlabel('ypred')
-    ax.set_ylabel('ytest')
-    plt.show()
-
-    """
-    # Plotting test vs predicted data
-    x_ax = range(len(ytest))
-    axes[1] = plt.plot(x_ax, ytest, linewidth=1, label="original")
-    axes[1] = plt.plot(x_ax, ypred, linewidth=1.1, label="predicted")
-    axes[1] = plt.title("y-test and y-predicted data")
-    axes[1] = plt.xlabel('X-axis')
-    axes[1] = plt.ylabel('Y-axis')
-    axes[1] = plt.legend(loc='best', fancybox=True, shadow=True)
-    axes[1] = plt.grid(True)
-    plt.show()
-    """
-    """
-    ############
-    error_value = metrics.mean_squared_error(ytest, ypred)
-    plt.subplot()
-    sns.regplot(x=ytest, y=ypred, fit_reg=True)
-    sns.regplot(x=ytest, y=ytest, fit_reg=True, color="Red")
-    plt.xticks(range(0, 10))
-    plt.yticks(range(0, 10))
-    plt.legend(["Prediction", "Actual data"])
-    plt.xlabel("Real value")
-    plt.ylabel("Predicted value")
-    plt.suptitle("Evaluation of Decision Tree")
-    plt.title("Mean squared error: " + str(error_value))
-    plt.grid(True)
-    plt.show()
-
-    n_folds = 5
-    regr = dtr
-    cv_error = np.average(cross_val_score(regr, X, Y, scoring='neg_mean_squared_error', cv=n_folds))
-    print("Cross Validation: {}".format(cv_error))
-    regr.fit(xtrain, ytrain)
-    y_pred = regr.predict(xtest)
-    y_train_pred = regr.predict(xtrain)
-    print("Mean squared error testing data: {}".format(mean_squared_error(ytest, y_pred)))
-    print("Mean squared error training data: {}".format(mean_squared_error(ytrain, y_train_pred)))
-    plt.scatter(ytest, y_pred, marker='o')
-    sns.regplot(x=ytest, y=ypred, fit_reg=True)
-    plt.show()"""
-
+    return
