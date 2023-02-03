@@ -3,6 +3,8 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
 from sklearn import metrics, linear_model, ensemble, model_selection
+from sklearn.pipeline import Pipeline
+from sklearn.impute import SimpleImputer
 
 from sklearn.linear_model import Ridge
 from sklearn.model_selection import train_test_split
@@ -13,38 +15,35 @@ from sklearn.metrics import mean_absolute_error as mae
 from sklearn.metrics import mean_squared_error, r2_score
 from sklearn.model_selection import cross_val_score
 
+
 def runTree(X,Y):
-    # Splitting test and train data into test_size 20%
     xtrain, xtest, ytrain, ytest = train_test_split(X, Y, test_size=0.20)
-    # Using max_depth, criterion will suffice for DT Models, rest all will remain constant
-    optimizable_parameters_list = {'max_depth': np.arange(1, 19)
+    # Max depth will suffice as an optimizer for trees, but other optimizable parameters are:
+    full_parameters_list = {'max_depth': np.arange(1, 19)
         , 'max_features': ('sqrt', 'log2')
         , 'min_samples_split': np.arange(1, 10)
                   }
 
     regressor = DecisionTreeRegressor()
     param_grid = {'max_depth': np.arange(1, 10),
-                  'min_samples_split': np.arange(2, 10)
+                  'min_samples_split': np.arange(0.01, 1, 0.01)
                   }
-
-    model = model_selection.GridSearchCV(estimator=regressor, param_grid=param_grid, verbose=10, n_jobs=1, cv=5)
+    model = model_selection.GridSearchCV(estimator=regressor, param_grid=param_grid,
+                                         verbose=10, n_jobs=1, cv=5)
     model.fit(xtrain, ytrain)
-    """print(model.best_score_)
-    print(model.best_estimator_.get_params())"""
-
     # Re-build the model with best estimated tree
-    best_model = model.best_estimator_
-
-    tree = best_model
+    tree = model.best_estimator_
     print_regression_solutions(xtrain, ytrain, xtest, ytest, tree, 'Decision Tree')
+
     ypred = tree.predict(xtest)
     plot_regression_outcome(ytest, ypred, 'Decision Tree')
 
+    # Compare decision tree with least squares l2 regularization
     l2 = Ridge(alpha=0.01)
     print_regression_solutions(xtrain, ytrain, xtest, ytest, l2, 'Ridge Regression')
     l2_pred = l2.predict(xtest)
-    plot_regression_outcome(ytest, l2_pred, 'Ridge Regression')
 
+    plot_regression_outcome(ytest, l2_pred, 'Ridge Regression')
     print_regression_residuals(ytest, ypred, 'Decision Tree')
     return
 
@@ -97,3 +96,5 @@ def print_regression_residuals(ytest, ypred, method):
     ax.set_ylabel('Decibel Error in predicted values using %s' % method)
     plt.show()
     return
+
+
