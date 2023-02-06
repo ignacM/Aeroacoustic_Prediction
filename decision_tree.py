@@ -2,9 +2,10 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
-from sklearn import metrics, linear_model, ensemble, model_selection
+from sklearn import metrics, linear_model, ensemble, model_selection, tree
 from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer
+from graphviz import Source
 
 from sklearn.linear_model import Ridge
 from sklearn.model_selection import train_test_split
@@ -17,6 +18,12 @@ from sklearn.model_selection import cross_val_score
 
 
 def runTree(X,Y):
+    """
+    Returns an overfitted tree and compares its results with l2 ridge regression
+    :param X:
+    :param Y:
+    :return:
+    """
     xtrain, xtest, ytrain, ytest = train_test_split(X, Y, test_size=0.20)
     # Max depth will suffice as an optimizer for trees, but other optimizable parameters are:
     full_parameters_list = {'max_depth': np.arange(1, 19)
@@ -49,7 +56,7 @@ def runTree(X,Y):
 
 
 def plot_regression_outcome(ytest, ypred, method):
-    fig, ax = plt.subplots(figsize=(8, 6))
+    fig, ax = plt.subplots(figsize=(7, 6))
     plt.suptitle('Predicted vs Actual for %s' % method, fontweight="bold", fontsize=15)
     error_value = round(metrics.mean_absolute_error(ytest, ypred), 2)
     plt.subplot()
@@ -85,7 +92,7 @@ def print_regression_solutions(xtrain, ytrain, xtest, ytest, model, method):
 
 
 def print_regression_residuals(ytest, ypred, method):
-    fig, ax = plt.subplots(figsize=(8, 6))
+    fig, ax = plt.subplots(figsize=(7, 6))
     fig.suptitle('Residual Plot for %s' % method, fontweight="bold", fontsize=15)
     residuals = ytest - ypred
     ax = sns.residplot(ax=ax, x=ypred, y=residuals, lowess=True, color='darkcyan',
@@ -97,4 +104,30 @@ def print_regression_residuals(ytest, ypred, method):
     plt.show()
     return
 
+
+def print_actual_vs_real(y_test, y_pred):
+    fig, ax = plt.subplots(figsize=(7, 6))
+    # Plotting test vs predicted data
+    x_ax = range(len(y_test))
+    plt.plot(x_ax, y_test, linewidth=1, label="Actual data")
+    plt.plot(x_ax, y_pred, linewidth=1.1, label="Predicted data")
+    plt.title("Actual sound data vs Predicted sound data")
+    plt.xlabel('Microphone number')
+    plt.ylabel('Sound Pressure Level, dB')
+    plt.legend(loc='best', fancybox=True, shadow=True)
+    plt.grid(True)
+    plt.show()
+
+
+def print_tree(fitted_dt_model):
+    fig, axe = plt.subplots(figsize=(60, 40))
+    tree.plot_tree(fitted_dt_model, ax=axe, fontsize=10)
+    plt.show()
+    tree.plot_tree(fitted_dt_model)
+    tree.export_graphviz(fitted_dt_model,
+                         out_file="tree.dot",
+                         filled=True, )
+
+    path = 'tree.dot'
+    s = Source.from_file(path)
 
