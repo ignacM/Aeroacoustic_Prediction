@@ -17,9 +17,10 @@ from sklearn.impute import SimpleImputer
 from decision_tree import print_regression_solutions, print_regression_residuals, plot_regression_outcome
 
 
-def runTree(X, Y):
+def runmodel(X, Y, model= DecisionTreeRegressor):
     """
-    Add so that the model can be chosen, so that it doesn't need to be tree itself.
+    Model that prints tran vs test loss for max depth, min sample split, and ccp giving user analysis.
+    After, model produces the best estimator of the tree printing its parameters.
     :param X:
     :param Y:
     :return:
@@ -30,10 +31,10 @@ def runTree(X, Y):
                   'max_features': ('sqrt', 'log2'),
                   'min_samples_split': np.arange(1, 10)
                   }
-    tree = DecisionTreeRegressor(random_state=42)
+    tree = model(random_state=42)
     """ Training Error and Test Error is visualized for different parameters:"""
     def mae_scores(arguments):
-        regressor = DecisionTreeRegressor(**arguments)
+        regressor = model(**arguments)
         scores = -1 * cross_val_score(regressor, x_train, y_train, cv=3,
                                       scoring='neg_mean_absolute_error')
         regressor.fit(x_train, y_train)
@@ -86,8 +87,8 @@ def runTree(X, Y):
     print_regression_solutions(x_train, y_train, x_test, y_test,
                                best_min_samples_split_tree, 'Best Min Sample Split')
     """ Then repeat with another parameter"""
-    parameter_grid = {"max_depth": np.arange(1, 10, 1)}
-    tree = DecisionTreeRegressor(random_state=42)
+    parameter_grid = {"max_depth": np.arange(1, 7, 1)}
+    tree = model(random_state=42)
     depth_gsearch = GridSearchCV(estimator=tree, param_grid=parameter_grid, cv=5)
     depth_gsearch.fit(x_train, y_train)
     depth_gsearch.best_params_
@@ -95,22 +96,96 @@ def runTree(X, Y):
     """fit tree and print evaluation"""
     print_regression_solutions(x_train, y_train, x_test, y_test,
                                best_depth_tree, 'Best Max Depth')
-    """ Then do gird search over all parameters giving a list of significant parametrs"""
-    """param_grid = {'max_depth': np.arange(1, 19),
-                  'max_features': ('sqrt', 'log2'),
-                  'min_samples_split': np.arange(2, 10)
+
+    # Manually choose mss and depth from graph
+    optimized_mss = int(input('What is the best min sample split?'))
+    if optimized_mss <= 2:
+        optimized_mss = 3
+    optimized_depth = int(input('What is the best depth?'))
+
+
+    """ Obtain best max depth and min sample split, and do a grid search of max depth +-1
+     and minsample split +-1, optimizing tree pruning"""
+
+    def mae_scores_2(arguments):
+        regressor = model(**arguments)
+        scores = -1 * cross_val_score(regressor, x_train, y_train, cv=3,
+                                      scoring='neg_mean_absolute_error')
+        regressor.fit(x_train, y_train)
+        ypred_train = regressor.predict(x_train)
+        ypred_test = regressor.predict(x_test)
+
+        train_error = mae(y_train, ypred_train)
+        test_error = mae(y_test, ypred_test)
+
+        return np.mean(scores), train_error, test_error
+
+    def parameter_vs_mae_2(start, end, step, optimizable, param1, param2):
+        """
+        Same as parameters_vs_mae but optimized for using parameters that need a range between 0 and 1
+        :param start:
+        :param end:
+        :param step:
+        :param optimizable:
+        :param param1:
+        :param param2:
+        :return:
+        """
+        results = {}
+        train_errors = {}
+        test_errors = {}
+        for i in range(start, end, step):
+            results[i], train_errors[i], test_errors[i] = mae_scores({optimizable: i/100,
+                                                                      'max_depth': param1,
+                                                                      'min_samples_split': param2})
+        """ Plotting Parameter vs Mean Absolute Error"""
+        fig, ax = plt.subplots(figsize=(8, 6))
+        plt.plot(list(results.keys()), list(results.values()))
+        plt.title("%s vs MAE" % optimizable, fontweight="bold", fontsize=25)
+        plt.xlabel("%s" % optimizable)
+        plt.ylabel("Mean Absolute Error")
+        plt.grid(True)
+        plt.show()
+
+        """ Plotting Train vs Test Error"""
+        fig, ax = plt.subplots(figsize=(8, 6))
+        plt.plot(list(train_errors.keys()), list(train_errors.values()))
+        plt.plot(list(test_errors.keys()), list(test_errors.values()))
+        plt.title("Train vs Test Error for %s" % optimizable, fontweight="bold", fontsize=25)
+        plt.xlabel("%s" % optimizable)
+        plt.ylabel("Error")
+        plt.legend(["Training Error", "Test Error"])
+        plt.grid(True)
+        plt.show()
+        return
+
+    parameter_vs_mae_2(1, 50, 1, 'ccp_alpha', optimized_depth, optimized_mss)
+
+    """ Obtain best ccp_alpha and input it in next grid search"""
+    optimized_ccp = float(input('What is the best ccp?'))
+    if optimized_ccp <= 0.04:
+        optimized_ccp == 0.05
+
+    param_grid = {'max_depth': np.arange(optimized_depth-1, optimized_depth+1, 1),
+                  'min_samples_split': np.arange(optimized_mss-1, optimized_mss+1, 1),
+                  'criterion': ["absolute_error"],
+                  'ccp_alpha': np.arange(optimized_ccp-0.05, optimized_ccp+0.05, 0.01)
                   }
+
     tree = DecisionTreeRegressor(random_state=42)
-    model = model_selection.GridSearchCV(estimator=tree, param_grid=param_grid, verbose=10, n_jobs=1, cv=5)
-    model.fit(x_train, y_train)
+    model = model_selection.GridSearchCV(estimator=tree, param_grid=param_grid, verbose=10, n_jobs=1, cv=10)
+
+    print_regression_solutions(x_train, y_train, x_test, y_test, model, 'Optimized Decision Tree')
 
     # Re-build the model with best estimated tree
     best_model = model.best_estimator_
     tree = best_model
-    tree.fit(x_train, y_train)"""
-    """Print the regression metrics"""
+    print('Parameters for best tree are: %s' %tree)
+    print_regression_solutions(x_train, y_train, x_test, y_test, tree, 'Optimized Decision Tree')
+    ypred = tree.predict(x_test)
+    plot_regression_outcome(y_test, ypred, 'Optimized Decision Tree')
+    print_regression_residuals(y_test, ypred, 'Optimized Decision Tree')
     return
 
-""" Should be returning best max depth and best minimum sample split"""
 
 
