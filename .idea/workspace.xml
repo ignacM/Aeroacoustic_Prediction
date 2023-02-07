@@ -4,7 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bd522123-228b-43e4-86a8-023a5cb99b76" name="Changes" comment="Created final tree" />
+    <list default="true" id="bd522123-228b-43e4-86a8-023a5cb99b76" name="Changes" comment="Run_model.py">
+      <change afterPath="$PROJECT_DIR$/Data/combined_data.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Data/combined_data_with_counterrot.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Data/raw_data.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Data/raw_data_2.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Run_individual_array.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/phase_angle_spl_d4_corse.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/preliminary_data.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/Data/preliminary_data.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/preliminary_data_2.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/Data/preliminary_data_2.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Run_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/Run_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_preprocessing.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/data_preprocessing.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/decision_tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/decision_tree.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/decision_tree_final.py" beforeDir="false" afterPath="$PROJECT_DIR$/decision_tree_final.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tree_search.py" beforeDir="false" afterPath="$PROJECT_DIR$/tree_search.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -46,27 +61,100 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/ignac/PycharmProjects/Aeroacoustic_Prediction&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.notebooks.jupyter.connections.configuration.JupyterServerConfigurable&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/ignac/Downloads",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.notebooks.jupyter.connections.configuration.JupyterServerConfigurable",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ignac\PycharmProjects\Aeroacoustic_Prediction\Data" />
       <recent name="C:\Users\ignac\PycharmProjects\Aeroacoustic_Prediction" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\ignac\PycharmProjects\Aeroacoustic_Prediction\Data" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Run_individual_array" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="pythonProject2" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\ignac\PycharmProjects\Aeroacoustic_Prediction\Run_individual_array.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="tree_search" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="pythonProject2" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\ignac\PycharmProjects\Aeroacoustic_Prediction\tree_search.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for Run_model" type="tests" factoryName="Autodetect" activateToolWindowBeforeRun="false">
+      <module name="pythonProject2" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;Run_model.test_TrendProduction&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.Run_individual_array" />
+      <item itemvalue="Python.tree_search" />
+      <item itemvalue="Python tests.Python tests for Run_model" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.Run_individual_array" />
+        <item itemvalue="Python.tree_search" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -89,7 +177,24 @@
       <workItem from="1670518528098" duration="10677000" />
       <workItem from="1670537994825" duration="9000" />
       <workItem from="1670538236306" duration="5703000" />
-      <workItem from="1670549805122" duration="5100000" />
+      <workItem from="1670549805122" duration="6166000" />
+      <workItem from="1670556579525" duration="8851000" />
+      <workItem from="1670691499977" duration="4959000" />
+      <workItem from="1670702131328" duration="2882000" />
+      <workItem from="1670706191655" duration="305000" />
+      <workItem from="1670706881943" duration="11000" />
+      <workItem from="1670725500488" duration="1472000" />
+      <workItem from="1670821930004" duration="7521000" />
+      <workItem from="1670832746587" duration="2793000" />
+      <workItem from="1670838241262" duration="10000" />
+      <workItem from="1671047081882" duration="8073000" />
+      <workItem from="1671085296995" duration="1581000" />
+      <workItem from="1671118257570" duration="23000" />
+      <workItem from="1675345782493" duration="38395000" />
+      <workItem from="1675543079836" duration="1247000" />
+      <workItem from="1675706164828" duration="6795000" />
+      <workItem from="1675722552811" duration="598000" />
+      <workItem from="1675763263956" duration="17624000" />
     </task>
     <task id="LOCAL-00001" summary="ADD Created project">
       <created>1670209834895</created>
@@ -126,7 +231,63 @@
       <option name="project" value="LOCAL" />
       <updated>1670554923122</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="updated plot for final tree">
+      <created>1670555134295</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1670555134295</updated>
+    </task>
+    <task id="LOCAL-00007" summary="updated decision_tree.py, to have a more compatible and easier to read code">
+      <created>1675352725171</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1675352725171</updated>
+    </task>
+    <task id="LOCAL-00008" summary="added trying for calling arguments into constructor">
+      <created>1675383979958</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1675383979958</updated>
+    </task>
+    <task id="LOCAL-00009" summary="decision_tree.py refractor">
+      <created>1675448822005</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1675448822005</updated>
+    </task>
+    <task id="LOCAL-00010" summary="decision_tree.py refractor">
+      <created>1675448835757</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1675448835757</updated>
+    </task>
+    <task id="LOCAL-00011" summary="decision_tree.py now includes print image of tree and actual vs real points functions">
+      <created>1675711902044</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1675711902044</updated>
+    </task>
+    <task id="LOCAL-00012" summary="tree_search.py now optimizes depth, mss and ccp given user analysis.">
+      <created>1675711990564</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1675711990564</updated>
+    </task>
+    <task id="LOCAL-00013" summary="decision_tree_final.py refractor for code optimization using imported frunctions from decision_tree">
+      <created>1675712035768</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1675712035768</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -181,7 +342,14 @@
     <MESSAGE value="ADD visualize df" />
     <MESSAGE value="Created Run model + optimized overfitted tree" />
     <MESSAGE value="Created final tree" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created final tree" />
+    <MESSAGE value="updated plot for final tree" />
+    <MESSAGE value="updated decision_tree.py, to have a more compatible and easier to read code" />
+    <MESSAGE value="added trying for calling arguments into constructor" />
+    <MESSAGE value="tree_search.py addded which is grid-searching an optimized tree" />
+    <MESSAGE value="decision_tree.py now includes print image of tree and actual vs real points functions" />
+    <MESSAGE value="tree_search.py now optimizes depth, mss and ccp given user analysis." />
+    <MESSAGE value="decision_tree_final.py refractor for code optimization using imported frunctions from decision_tree" />
+    <option name="LAST_COMMIT_MESSAGE" value="decision_tree_final.py refractor for code optimization using imported frunctions from decision_tree" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -195,7 +363,10 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Aeroacoustic_Prediction$Run_model.coverage" NAME="Run_model Coverage Results" MODIFIED="1670554848787" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Aeroacoustic_Prediction$Run_model.coverage" NAME="Run_model Coverage Results" MODIFIED="1675790550008" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Aeroacoustic_Prediction$decision_tree.coverage" NAME="decision_tree Coverage Results" MODIFIED="1670536426547" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Aeroacoustic_Prediction$.coverage" NAME=" Coverage Results" MODIFIED="1675787255192" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Aeroacoustic_Prediction$try.coverage" NAME="try Coverage Results" MODIFIED="1675383303064" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Aeroacoustic_Prediction$decision_tree_final.coverage" NAME="decision_tree_final Coverage Results" MODIFIED="1670643333612" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
