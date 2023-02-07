@@ -98,7 +98,7 @@ def print_regression_residuals(ytest, ypred, method):
     ax = sns.residplot(ax=ax, x=ypred, y=residuals, lowess=True, color='darkcyan',
                        scatter_kws={'alpha': 0.5},
                        line_kws={'color': 'red', 'lw': 1, 'alpha': 0.8})
-    plt.legend(["", "Predicted values", "Actual values line"])
+    plt.legend(["", "Predicted values", "Lowess Smooth line"])
     ax.set_xlabel('Sound Pressure Level, (dB)')
     ax.set_ylabel('Decibel Error in predicted values using %s' % method)
     plt.show()

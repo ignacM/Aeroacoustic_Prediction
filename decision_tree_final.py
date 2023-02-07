@@ -28,7 +28,7 @@ def runTree(X, Y):
     x_train, x_test, y_train, y_test = train_test_split(X, Y, test_size=0.20)
 
     # Give parameters of optimized tree:
-    tre = DecisionTreeRegressor(max_depth=6, min_samples_split=2, ccp_alpha=0.01)
+    tre = DecisionTreeRegressor(max_depth=8, min_samples_split=2, ccp_alpha=0.02)
     #tre.fit(x_train, y_train)
     # Print evaluation metrics
     print_regression_solutions(x_train, y_train, x_test, y_test, tre, 'Optimized Decision Tree')
@@ -40,4 +40,4 @@ def runTree(X, Y):
     print_actual_vs_real(y_test, ypred)
 
     # Plot tree
-    print_tree(tre)
+    #print_tree(tre)
