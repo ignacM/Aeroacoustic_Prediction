@@ -73,12 +73,19 @@ def runmodel(X, Y, model= DecisionTreeRegressor):
         plt.show()
         return
 
+    # FInd optimum test and train for given parameters
     parameter_vs_mae(1, 20, 1, 'max_depth')
+    # Manually choose depth
+    optimized_depth = int(input('What is the best depth?'))
     parameter_vs_mae(2, 100, 1, 'min_samples_split')
+    # Manually choose mss
+    optimized_mss = int(input('What is the best min sample split?'))
+    if optimized_mss <= 2:
+        optimized_mss = 3
 
     """Then, a grid search of the optimization of minimum samples split is done,
     we know that lower minimum_samples split results in lower test error: """
-    parameter_grid = {"min_samples_split": np.arange(2, 10, 1)}
+    parameter_grid = {"min_samples_split": np.arange(2, optimized_mss+5, 1)}
     min_samples_split_gsearch = GridSearchCV(estimator=tree, param_grid=parameter_grid, cv=5)
     min_samples_split_gsearch.fit(x_train, y_train)
     min_samples_split_gsearch.best_params_
@@ -86,6 +93,7 @@ def runmodel(X, Y, model= DecisionTreeRegressor):
     best_min_samples_split_tree = min_samples_split_gsearch.best_estimator_
     print_regression_solutions(x_train, y_train, x_test, y_test,
                                best_min_samples_split_tree, 'Best Min Sample Split')
+
     """ Then repeat with another parameter"""
     parameter_grid = {"max_depth": np.arange(1, 7, 1)}
     tree = model(random_state=42)
@@ -97,11 +105,7 @@ def runmodel(X, Y, model= DecisionTreeRegressor):
     print_regression_solutions(x_train, y_train, x_test, y_test,
                                best_depth_tree, 'Best Max Depth')
 
-    # Manually choose mss and depth from graph
-    optimized_mss = int(input('What is the best min sample split?'))
-    if optimized_mss <= 2:
-        optimized_mss = 3
-    optimized_depth = int(input('What is the best depth?'))
+
 
 
     """ Obtain best max depth and min sample split, and do a grid search of max depth +-1
@@ -163,13 +167,13 @@ def runmodel(X, Y, model= DecisionTreeRegressor):
 
     """ Obtain best ccp_alpha and input it in next grid search"""
     optimized_ccp = float(input('What is the best ccp?'))
-    if optimized_ccp <= 0.04:
-        optimized_ccp == 0.05
+    if optimized_ccp <= 0.05:
+        optimized_ccp = float(0.06)
 
     param_grid = {'max_depth': np.arange(optimized_depth-1, optimized_depth+1, 1),
                   'min_samples_split': np.arange(optimized_mss-1, optimized_mss+1, 1),
                   'criterion': ["absolute_error"],
-                  'ccp_alpha': np.arange(optimized_ccp-0.05, optimized_ccp+0.05, 0.01)
+                  'ccp_alpha': np.arange(optimized_ccp-float(0.05), optimized_ccp+float(0.05), 0.01)
                   }
 
     tree = DecisionTreeRegressor(random_state=42)
