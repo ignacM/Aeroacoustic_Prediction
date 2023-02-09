@@ -46,12 +46,19 @@ def runmodel(X, Y, model= DecisionTreeRegressor):
 
         return np.mean(scores), train_error, test_error
 
-    def parameter_vs_mae(start, end, step, parameter_name):
+    def parameter_loss_mae(start, end, step, parameter_name):
         results = {}
         train_errors = {}
         test_errors = {}
-        for i in range(start, end, step):
-            results[i], train_errors[i], test_errors[i] = mae_scores({parameter_name: i})
+        if type(start) == float:
+            start = int(start * 100)
+            end = int(end * 100)
+            step = int(step * 100)
+            for i in range(start, end, step):
+                results[i / 100], train_errors[i / 100], test_errors[i / 100] = mae_scores({parameter_name: i / 100})
+        else:
+            for i in range(start, end, step):
+                results[i], train_errors[i], test_errors[i] = mae_scores({parameter_name: i})
         """ Plotting Parameter vs Mean Absolute Error"""
         fig, ax = plt.subplots(figsize=(8, 6))
         plt.plot(list(results.keys()), list(results.values()))
@@ -74,10 +81,10 @@ def runmodel(X, Y, model= DecisionTreeRegressor):
         return
 
     # FInd optimum test and train for given parameters
-    parameter_vs_mae(1, 20, 1, 'max_depth')
+    parameter_loss_mae(1, 20, 1, 'max_depth')
     # Manually choose depth
     optimized_depth = int(input('What is the best depth?'))
-    parameter_vs_mae(2, 100, 1, 'min_samples_split')
+    parameter_loss_mae(2, 100, 1, 'min_samples_split')
     # Manually choose mss
     optimized_mss = int(input('What is the best min sample split?'))
     if optimized_mss <= 2:
