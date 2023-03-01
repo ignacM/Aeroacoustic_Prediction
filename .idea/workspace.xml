@@ -4,13 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bd522123-228b-43e4-86a8-023a5cb99b76" name="Changes" comment="tree_search.py now allows parameters given in the form of floats">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/pythonProject2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/pythonProject2.iml" afterDir="false" />
+    <list default="true" id="bd522123-228b-43e4-86a8-023a5cb99b76" name="Changes" comment="gradient_booster now takes parameters in the form of list from Run_model.py">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/combined_data.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/Data/combined_data.xlsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Run_individual_array.py" beforeDir="false" afterPath="$PROJECT_DIR$/Run_individual_array.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Run_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/Run_model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/decision_tree_final.py" beforeDir="false" afterPath="$PROJECT_DIR$/decision_tree_final.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/df_azimuthal.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/df_polar.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/gradientbooster.py" beforeDir="false" afterPath="$PROJECT_DIR$/gradientbooster.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tree_search.py" beforeDir="false" afterPath="$PROJECT_DIR$/tree_search.py" afterDir="false" />
     </list>
@@ -22,8 +23,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Jupyter Notebook" />
         <option value="Python Script" />
+        <option value="Jupyter Notebook" />
       </list>
     </option>
   </component>
@@ -55,74 +56,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/ignac/PycharmProjects/youtube_video_bot&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/ignac/PycharmProjects/Aeroacoustic_Prediction",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "advanced.settings",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\ignac\PycharmProjects\Aeroacoustic_Prediction\Data" />
       <recent name="C:\Users\ignac\PycharmProjects\Aeroacoustic_Prediction" />
+      <recent name="C:\Users\ignac\PycharmProjects\Aeroacoustic_Prediction\Data" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\ignac\PycharmProjects\Aeroacoustic_Prediction\Data" />
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="Run_individual_array" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="pythonProject2" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="C:\Users\ignac\PycharmProjects\Aeroacoustic_Prediction\Run_individual_array.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="tree_search" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="pythonProject2" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="C:\Users\ignac\PycharmProjects\Aeroacoustic_Prediction\tree_search.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="Python tests for Run_model" type="tests" factoryName="Autodetect" activateToolWindowBeforeRun="false">
       <module name="pythonProject2" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -138,17 +95,6 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <list>
-      <item itemvalue="Python.Run_individual_array" />
-      <item itemvalue="Python.tree_search" />
-      <item itemvalue="Python tests.Python tests for Run_model" />
-    </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Python.Run_individual_array" />
-        <item itemvalue="Python.tree_search" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -198,7 +144,18 @@
       <workItem from="1676049687105" duration="920000" />
       <workItem from="1676050634294" duration="7191000" />
       <workItem from="1676214868056" duration="5606000" />
-      <workItem from="1676230452489" duration="13803000" />
+      <workItem from="1676230452489" duration="13949000" />
+      <workItem from="1676284188471" duration="4511000" />
+      <workItem from="1676383925901" duration="3637000" />
+      <workItem from="1676728511733" duration="3000" />
+      <workItem from="1676728534027" duration="1833000" />
+      <workItem from="1676936479534" duration="763000" />
+      <workItem from="1676977132032" duration="5072000" />
+      <workItem from="1677152735591" duration="7084000" />
+      <workItem from="1677165137656" duration="13000" />
+      <workItem from="1677171838248" duration="9704000" />
+      <workItem from="1677435149672" duration="27442000" />
+      <workItem from="1677669659250" duration="18461000" />
     </task>
     <task id="LOCAL-00001" summary="ADD Created project">
       <created>1670209834895</created>
@@ -340,7 +297,28 @@
       <option name="project" value="LOCAL" />
       <updated>1675965272058</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="gradientbooster.py now doesnt take variance and bias at every point,">
+      <created>1676247656967</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1676247656967</updated>
+    </task>
+    <task id="LOCAL-00022" summary="gradientbooster.py now doesnt take variance and bias at every point,">
+      <created>1676247661849</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1676247661849</updated>
+    </task>
+    <task id="LOCAL-00023" summary="gradient_booster now takes parameters in the form of list from Run_model.py">
+      <created>1676247714331</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1676247714331</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -409,7 +387,9 @@
     <MESSAGE value="added read.md in Data folder to explain assumptions in data calculations" />
     <MESSAGE value="added gradientbooster.py which optimizes a model from a given list of parameters and range" />
     <MESSAGE value="tree_search.py now allows parameters given in the form of floats" />
-    <option name="LAST_COMMIT_MESSAGE" value="tree_search.py now allows parameters given in the form of floats" />
+    <MESSAGE value="gradientbooster.py now doesnt take variance and bias at every point," />
+    <MESSAGE value="gradient_booster now takes parameters in the form of list from Run_model.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="gradient_booster now takes parameters in the form of list from Run_model.py" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -424,11 +404,14 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Aeroacoustic_Prediction$Run_individual_array.coverage" NAME="Run_individual_array Coverage Results" MODIFIED="1676052108847" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Aeroacoustic_Prediction$Run_model.coverage" NAME="Run_model Coverage Results" MODIFIED="1676247309901" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Aeroacoustic_Prediction$Run_model.coverage" NAME="Run_model Coverage Results" MODIFIED="1677523324411" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Aeroacoustic_Prediction$decision_tree.coverage" NAME="decision_tree Coverage Results" MODIFIED="1670536426547" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Aeroacoustic_Prediction$.coverage" NAME=" Coverage Results" MODIFIED="1675787255192" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Aeroacoustic_Prediction$.coverage" NAME=" Coverage Results" MODIFIED="1677670503275" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Aeroacoustic_Prediction$Run_model_2.coverage" NAME="Run_model_2 Coverage Results" MODIFIED="1677690020235" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Aeroacoustic_Prediction$try.coverage" NAME="try Coverage Results" MODIFIED="1675383303064" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Aeroacoustic_Prediction$gradientbooster.coverage" NAME="gradientbooster Coverage Results" MODIFIED="1676055485415" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Aeroacoustic_Prediction$Run_model_2_GP.coverage" NAME="Run_model_2_GP Coverage Results" MODIFIED="1677686577850" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Aeroacoustic_Prediction$gradientbooster.coverage" NAME="gradientbooster Coverage Results" MODIFIED="1677522933121" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Aeroacoustic_Prediction$Run_model_2_GB.coverage" NAME="Run_model_2_GB Coverage Results" MODIFIED="1677686201222" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Aeroacoustic_Prediction$decision_tree_final.coverage" NAME="decision_tree_final Coverage Results" MODIFIED="1670643333612" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
