@@ -1,0 +1,54 @@
+<changelist name="Uncommitted_changes_before_Update_at_05_03_2023_23_02_[Changes]" date="1678057374443" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_05_03_2023_23_02_[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 05/03/2023 23:02 [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="Data/combined_data_xyz.xlsx" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="Data/phase_angle_spl_d4_corse.xlsx" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="Data/dec22/data_preprocessed.xlsx" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_05_03_2023_23_02_[Changes]/data_preprocessed.xlsx" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="Data/raw_data.xlsx" />
+    <option name="AFTER_PATH" value="Data/oct22/data_raw.xlsx" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_05_03_2023_23_02_[Changes]/data_raw.xlsx" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="Data/combined_data_with_counterrot.xlsx" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="Data/raw_data_2.xlsx" />
+    <option name="AFTER_PATH" value="Data/dec22/data_raw.xlsx" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_05_03_2023_23_02_[Changes]/data_raw1.xlsx" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="Data/dec22/data_input.xlsx" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_05_03_2023_23_02_[Changes]/data_input.xlsx" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="Data/preliminary_data_2.xlsx" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="Data/preliminary_data.xlsx" />
+    <option name="AFTER_PATH" value="Data/oct22/data_preprocessed.xlsx" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_05_03_2023_23_02_[Changes]/data_preprocessed1.xlsx" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="Data/combined_data.xlsx" />
+    <option name="AFTER_PATH" value="Data/dec22/data_input_xyz.xlsx" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_05_03_2023_23_02_[Changes]/data_input_xyz.xlsx" />
+  </binary>
+</changelist>
