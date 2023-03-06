@@ -19,17 +19,18 @@ from sklearn.model_selection import cross_val_score
 
 def runTree(X,Y):
     """
-    Returns an overfitted tree and compares its results with l2 ridge regression
-    :param X:
-    :param Y:
+    Returns fitted tree and compares its results with l2 ridge regression
+    :param X: complete X data
+    :param Y: complete Y data
     :return:
     """
     xtrain, xtest, ytrain, ytest = train_test_split(X, Y, test_size=0.20)
     # Max depth will suffice as an optimizer for trees, but other optimizable parameters are:
-    full_parameters_list = {'max_depth': np.arange(1, 19)
-        , 'max_features': ('sqrt', 'log2')
-        , 'min_samples_split': np.arange(1, 10)
-                  }
+    """full_parameters_list = {
+            'max_depth': np.arange(1, 19),
+            'max_features': ('sqrt', 'log2'),
+            'min_samples_split': np.arange(1, 10)
+                                }"""
 
     regressor = DecisionTreeRegressor()
     param_grid = {'max_depth': np.arange(1, 10),
@@ -56,13 +57,21 @@ def runTree(X,Y):
 
 
 def plot_regression_outcome(ytest, ypred, method):
+    """
+    Plots a graph comparing ytest and ypred. Prints MSE, RMSE, and MAE.
+    :param ytest:
+    :param ypred:
+    :param method: 'str', name of method used. Eg. 'Regressor', 'Decision Tree'
+    :return:
+    """
     fig, ax = plt.subplots(figsize=(7, 6))
     plt.suptitle('Predicted vs Actual for %s' % method, fontweight="bold", fontsize=15)
     error_value = round(metrics.mean_absolute_error(ytest, ypred), 2)
     plt.subplot()
-    sns.regplot(x=ytest, y=ypred, fit_reg=True, color='red') # fit_reg prints the area
+    sns.regplot(x=ytest, y=ypred, fit_reg=True, color='red')  # fit_reg prints the area
     sns.regplot(x=ytest, y=ytest, fit_reg=True, color='black')
-    plt.legend(["Prediction points", "Prediction best fit", "Area", "Actual point", "Actual line"])
+    plt.legend(["Prediction points", "Prediction best fit", "Confidence Interval", "Actual point", "Actual line"],
+               fancybox=True, shadow=True)
     plt.xlabel("Real value")
     plt.ylabel("Predicted value")
     plt.title("Mean absolute error: %.2f" % error_value)
@@ -80,37 +89,72 @@ def plot_regression_outcome(ytest, ypred, method):
     return
 
 
-def print_regression_solutions(xtrain, ytrain, xtest, ytest, model, method):
+def print_regression_solutions(xtrain, ytrain, xtest, ytest, model):
+    """
+    Fits given model. Prints train and test accuracy as well as R2.
+    :param xtrain:
+    :param ytrain:
+    :param xtest:
+    :param ytest:
+    :param model:
+    :return:
+    """
     model.fit(xtrain, ytrain)
     print(" ")
-    print(f'%s Train Accuracy - : {model.score(xtrain, ytrain):.3f}' % method)
-    print(f'%s Test Accuracy - : {model.score(xtest, ytest):.3f}' % method)
+    print(f'%s Train Accuracy - : {model.score(xtrain, ytrain):.3f}' )
+    print(f'%s Test Accuracy - : {model.score(xtest, ytest):.3f}' )
     score = model.score(xtrain, ytrain)
-    print("%s R-squared:" % method, score)
+    print("%s R-squared:", score)
     print(" ")
     return
 
 
 def print_regression_residuals(ytest, ypred, method):
+    """
+    Plots a graph of residuals of predicted values. Accepts series and arrays.
+    :param ytest:
+    :param ypred:
+    :param method: 'str', name of method used. Eg. 'Regressor', 'Decision Tree'
+    :return:
+
+    Confidence Interval: 'ci'
+    ci int in [0, 100] or None, optional Size of the confidence interval for the regression estimate. This will be drawn
+    using translucent bands around the regression line. The confidence interval is estimated using a bootstrap; for
+    large datasets, it may be advisable to avoid that computation by setting this parameter to None.
+    """
     fig, ax = plt.subplots(figsize=(7, 6))
     fig.suptitle('Residual Plot for %s' % method, fontweight="bold", fontsize=15)
-    residuals = ytest - ypred
-    ax = sns.residplot(ax=ax, x=ypred, y=residuals, lowess=True, color='darkcyan',
-                       scatter_kws={'alpha': 0.5},
-                       line_kws={'color': 'red', 'lw': 1, 'alpha': 0.8})
-    plt.legend(["", "Predicted values", "Lowess Smooth line"])
+    if isinstance(ytest, pd.Series):
+        error_value = round(metrics.mean_absolute_error(np.array(ytest), np.array(ypred)), 2)
+        ax = sns.residplot(ax=ax, x=np.array(ytest), y=np.array(ypred), lowess=True, color='black',
+                           scatter_kws={'alpha': 1, 'marker': 'x', 's': 75},
+                           line_kws={'color': 'red', 'lw': 1, 'alpha': 1})
+    else:
+        error_value = round(metrics.mean_absolute_error(ytest, ypred), 2)
+        ax = sns.residplot(ax=ax, x=ytest, y=ypred, lowess=True, color='black',
+                           scatter_kws={'alpha': 1, 'marker': 'x', 's': 75},
+                           line_kws={'color': 'red', 'lw': 1, 'alpha': 1})
+
+    plt.legend(["Zero-error line", "Predicted values", "Lowess Smooth line"], fancybox=True, shadow=True)
     ax.set_xlabel('Sound Pressure Level, (dB)')
-    ax.set_ylabel('Decibel Error in predicted values using %s' % method)
+    ax.set_ylabel('Decibel Error in predicted values')
+    plt.title("Mean absolute error: %.2f" % error_value)
     plt.show()
     return
 
 
 def print_actual_vs_real(y_test, y_pred):
+    """
+    Plots a graph of test vs predicted values. Fits line to points.
+    :param y_test:
+    :param y_pred:
+    :return:
+    """
     fig, ax = plt.subplots(figsize=(7, 6))
     # Plotting test vs predicted data
     x_ax = range(len(y_test))
-    plt.plot(x_ax, y_test, linewidth=1, label="Actual data")
-    plt.plot(x_ax, y_pred, linewidth=1.1, label="Predicted data")
+    plt.plot(x_ax, y_test, linewidth=1.5, label="Actual data")
+    plt.plot(x_ax, y_pred, linewidth=1.5, label="Predicted data")
     plt.title("Actual sound data vs Predicted sound data")
     plt.xlabel('Microphone number')
     plt.ylabel('Sound Pressure Level, dB')
@@ -120,14 +164,21 @@ def print_actual_vs_real(y_test, y_pred):
 
 
 def print_tree(fitted_dt_model):
+    """
+    Plots decision tree. Exports tree as .dot through graphviz.
+    :param fitted_dt_model: decision tree after fitted with train data.
+    :return:
+    """
     fig, axe = plt.subplots(figsize=(60, 40))
     tree.plot_tree(fitted_dt_model, ax=axe, fontsize=10)
     plt.show()
     tree.plot_tree(fitted_dt_model)
     tree.export_graphviz(fitted_dt_model,
-                         out_file="tree.dot",
+                         out_file="../models/tree.dot",
                          filled=True, )
 
-    path = 'tree.dot'
+    path = '../models/tree.dot'
     s = Source.from_file(path)
+
+
 
