@@ -38,14 +38,15 @@ def dataSplit(exclude=60, scaler=MinMaxScaler()):
     df.loc[(df['degree'] == exclude), 'exclude'] = 1
     exclude_col = df.loc[:, ['exclude']]
 
+    Y_data = df.drop(['theta', 'degree'], axis=1)
 
+    Y_data['db'] = np.log(Y_data['db'])
 
     scaler = scaler
     df = scaler.fit_transform(df)
     df = pd.DataFrame(df, columns=['db', 'theta', 'degree', 'exclude'])
     df['exclude'] = exclude_col
 
-    Y_data = df.drop(['theta', 'degree'], axis=1)
 
     X_data = df.drop(['db'], axis=1)
     X_data = X_data.to_numpy()
@@ -56,5 +57,5 @@ def dataSplit(exclude=60, scaler=MinMaxScaler()):
     y_train = Y_data.loc[(Y_data['exclude'] == 0), 'db']
     y_test = Y_data.loc[(Y_data['exclude'] == 1), 'db']
 
-    return x_train, y_train, x_test, y_test, minimum, maximum
+    return x_train, y_train, x_test, y_test
 
