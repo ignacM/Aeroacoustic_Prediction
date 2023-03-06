@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bd522123-228b-43e4-86a8-023a5cb99b76" name="Changes" comment="added new functions and fixed de-normalization">
+    <list default="true" id="bd522123-228b-43e4-86a8-023a5cb99b76" name="Changes" comment="Simplified regression_eval.py for evaluation functions and kernels.py for reproducible SVM and Gaussian Process Regression Kernels">
       <change afterPath="$PROJECT_DIR$/src/Run_model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/kernels.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/train_test_split.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Run_individual_array.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Run_individual_array.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Run_model.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Run_model_2.py" beforeDir="false" />
@@ -16,7 +14,6 @@
       <change beforePath="$PROJECT_DIR$/Run_model_2_GP.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model_GPR.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SVR_search.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/SVR_search.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data_preprocessing.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/data_preprocessing.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decision_tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/evaluation_functions.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/decision_tree_final.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/run_final_model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gradientbooster.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/gradientbooster.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model_comparison_pipeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model_comparison_pipeline.py" afterDir="false" />
@@ -84,11 +81,11 @@
       <recent name="C:\Users\ignac\PycharmProjects\Aeroacoustic_Prediction\Data" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ignac\PycharmProjects\Aeroacoustic_Prediction\src\functions" />
       <recent name="C:\Users\ignac\PycharmProjects\Aeroacoustic_Prediction\models" />
       <recent name="C:\Users\ignac\PycharmProjects\Aeroacoustic_Prediction\notebooks" />
       <recent name="C:\Users\ignac\PycharmProjects\Aeroacoustic_Prediction\src" />
       <recent name="C:\Users\ignac\PycharmProjects\Aeroacoustic_Prediction\Input\Data_dec22" />
-      <recent name="C:\Users\ignac\PycharmProjects\Aeroacoustic_Prediction\Data\Data_dec22" />
     </key>
   </component>
   <component name="RunManager">
@@ -172,7 +169,7 @@
       <workItem from="1677953596070" duration="20266000" />
       <workItem from="1678110957708" duration="3775000" />
       <workItem from="1678128609064" duration="1685000" />
-      <workItem from="1678130333962" duration="4654000" />
+      <workItem from="1678130333962" duration="5102000" />
     </task>
     <task id="LOCAL-00001" summary="ADD Created project">
       <created>1670209834895</created>
@@ -391,7 +388,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678128549824</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Simplified regression_eval.py for evaluation functions and kernels.py for reproducible SVM and Gaussian Process Regression Kernels">
+      <created>1678136355955</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1678136355958</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -441,7 +445,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Created final tree" />
     <MESSAGE value="updated plot for final tree" />
     <MESSAGE value="updated decision_tree.py, to have a more compatible and easier to read code" />
     <MESSAGE value="added trying for calling arguments into constructor" />
@@ -466,7 +469,8 @@
     <MESSAGE value="refactor for more readable code" />
     <MESSAGE value="reformat project structure" />
     <MESSAGE value="added new functions and fixed de-normalization" />
-    <option name="LAST_COMMIT_MESSAGE" value="added new functions and fixed de-normalization" />
+    <MESSAGE value="Simplified regression_eval.py for evaluation functions and kernels.py for reproducible SVM and Gaussian Process Regression Kernels" />
+    <option name="LAST_COMMIT_MESSAGE" value="Simplified regression_eval.py for evaluation functions and kernels.py for reproducible SVM and Gaussian Process Regression Kernels" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Aeroacoustic_Prediction$.coverage" NAME=" Coverage Results" MODIFIED="1677670503275" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
