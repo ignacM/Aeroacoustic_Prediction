@@ -181,4 +181,23 @@ def print_tree(fitted_dt_model):
     s = Source.from_file(path)
 
 
+def print_predictions(y_pred, ypred_labels):
+    """
+    Plots a graph of predicted values. Fits line to points.
+    :param y_pred:
+    :param ypred_labels: array of names of ypred
+    :return:
+    """
+    fig, ax = plt.subplots(figsize=(7, 6))
+    # Plotting test vs predicted data
+    for item in range(len(y_pred)):
+        plt.plot(y_pred[item], linewidth=1.5)
+    plt.title("Predicted sound data")
+    plt.xlabel('Microphone number')
+    plt.ylabel('Sound Pressure Level, dB')
+    plt.legend(ypred_labels)
+    plt.grid(True)
+    plt.show()
+
+
 
