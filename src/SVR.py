@@ -17,6 +17,7 @@ if __name__ == '__main__':
 
     # Split data into train / test. Exclude Angle 60
     x_train, y_train, x_test, y_test = dataSplit(exclude=60, scaler=MinMaxScaler())
+    # SVR seemed to have the best performance when Min-max scaling of x data and log scale on y
 
     # define a parameter space for SVR:
     """
@@ -25,19 +26,20 @@ if __name__ == '__main__':
     Gamma: radius of group similarity. Big gamma = points need to be very close to each other.
     """
 
+    # Define parameter names and space
     param_names = ['C', 'epsilon', 'gamma', 'tol']
     param_space = [
-        space.Real(20, 70, name='C'),
-        space.Real(0.001, 0.005, name='epsilon'),
+        space.Real(100, 10000, name='C'),
+        space.Real(0.00001, 0.05, name='epsilon'),
         space.Categorical(['scale'], name='gamma'),
-        space.Real(0.001, 0.1, name='tol')
+        space.Real(0.0001, 0.1, name='tol')
                    ]
 
 
     @use_named_args(param_space)
     def optimize_mae_function(**params):
         """
-        Fits an SVM regressor and returns MAE
+        Fits an SVM regressor and returns an average of MAE over a number of cross validations
         :param params:
         :return:
         """
@@ -45,7 +47,7 @@ if __name__ == '__main__':
         return -np.mean(cross_val_score(regressor, x_train, y_train, cv=3, n_jobs=-1, scoring="neg_mean_absolute_error"))
 
     # Use Bayesian Optimization with Gaussian process to find function minimum
-    res_gp = gp_minimize(optimize_mae_function, dimensions=param_space, n_calls=30, verbose=10, n_initial_points=20)
+    res_gp = gp_minimize(optimize_mae_function, dimensions=param_space, n_calls=20, verbose=10, n_initial_points=20)
 
     # Save parameters fround in global minimum
     best_parameters = dict(zip(param_names, res_gp.x))
@@ -61,7 +63,7 @@ if __name__ == '__main__':
         :param y_test:
         :return: descaled y_train, descaled ypred, and fitted model
         """
-        # Fitting regressor
+        # Fitting regressor with best parameters from optimization
         regressor = SVR(**best_parameters)
         regressor.fit(x_train, y_train)
         # Predicting data
