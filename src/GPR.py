@@ -16,13 +16,16 @@ from train_test_split import dataSplit, deNormalize
 
 if __name__ == '__main__':
 
-    # Split data into train / test. Exclude Angle 60
-    x_train, y_train, x_test, y_test = dataSplit(exclude=60, scaler=MinMaxScaler())
+    # Split data into train / test. Exclude Angle 180
+    x_train, y_train, x_test, y_test = dataSplit(exclude=150, scaler=MinMaxScaler())
     # GPR seemed to have the best performance when Min-max scaling of x data and log scale on y
-
+    print(y_test)
 
     # Define parameter names and space
     param_names = ['alpha']
+    Kernel = kernels.ConstantKernel(1, constant_value_bounds=(1e-2, 10.0))\
+             * kernels.RBF(1, length_scale_bounds=(1e-2, 10.0))
+
     # define a parameter space for GaussianProcessR:
     param_space = [
         space.Real(0.00000000001, 0.01, prior="uniform", name="alpha")
@@ -33,7 +36,6 @@ if __name__ == '__main__':
 
 
 
-
     @use_named_args(param_space)
     def optimize_mae_function(**params):
         """
@@ -41,7 +43,7 @@ if __name__ == '__main__':
         :param params:
         :return:
         """
-        regressor = GaussianProcessRegressor(**params)
+        regressor = GaussianProcessRegressor(**params, kernel=Kernel)
         return -np.mean(cross_val_score(regressor, x_train, y_train, cv=3, n_jobs=-1, scoring="neg_mean_absolute_error"))
 
     # Use Bayesian Optimization with Gaussian process to find function minimum
@@ -62,7 +64,7 @@ if __name__ == '__main__':
         :return: descaled y_train, descaled ypred, and fitted model
         """
         # Fitting regressor with best parameters from optimization
-        regressor = GaussianProcessRegressor(**best_parameters)
+        regressor = GaussianProcessRegressor(**best_parameters, kernel=Kernel)
         regressor.fit(x_train, y_train)
         # Predicting data
         ypred = regressor.predict(x_test)
