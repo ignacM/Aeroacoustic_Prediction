@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
 
@@ -28,9 +29,9 @@ def dataSplit(exclude=60, scaler=MinMaxScaler()):
     # Dividing data between X and Y
     path = '..\Data\dec22\data_input.xlsx'
     # Sheet name either azi or pol
-    df = pd.read_excel(path, sheet_name='azi')
-    minimum = min(df['db'])
-    maximum = max(df['db'])
+    df = pd.read_excel(path, sheet_name='pol')
+    # minimum = min(df['db'])
+    # maximum = max(df['db'])
 
     # Selecting which set to use as test data
     exclude = exclude
@@ -47,7 +48,6 @@ def dataSplit(exclude=60, scaler=MinMaxScaler()):
     df = pd.DataFrame(df, columns=['db', 'theta', 'degree', 'exclude'])
     df['exclude'] = exclude_col
 
-
     X_data = df.drop(['db'], axis=1)
     X_data = X_data.to_numpy()
 
@@ -59,3 +59,43 @@ def dataSplit(exclude=60, scaler=MinMaxScaler()):
 
     return x_train, y_train, x_test, y_test
 
+
+if __name__ == '__main__':
+
+    path = '..\Data\dec22\data_input.xlsx'
+    df = pd.read_excel(path, sheet_name='pol')
+    labels = [
+        '0 degrees',
+        '15 degrees',
+        '30 degrees',
+        '45 degrees',
+        '60 degrees',
+        '75 degrees',
+        '90 degrees',
+        '105 degrees',
+        '120 degrees',
+        '135 degrees',
+        '150 degrees',
+        '165 degrees'
+    ]
+
+    def print_predictions(y_pred, ypred_labels):
+        """
+        Plots a graph of predicted values. Fits line to points.
+        :param y_pred:
+        :param ypred_labels: array of names of ypred
+        :return:
+        """
+        fig, ax = plt.subplots(figsize=(7, 6))
+        # Plotting test vs predicted data
+        for item in np.arange(0, 180, 15):
+            plt.plot(np.arange(1,24,1), df.loc[df['degree'] == item, ['db']], linewidth=1.5)
+
+        plt.title("Simulated  sound data", fontweight="bold", fontsize=15)
+        plt.xlabel('Microphone number')
+        plt.ylabel('Sound Pressure Level, dB')
+        plt.legend(ypred_labels)
+        plt.grid(True)
+        plt.show()
+
+    print_predictions(df, labels)
