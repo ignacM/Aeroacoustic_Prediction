@@ -1,21 +1,14 @@
-import pandas as pd
 import matplotlib.pyplot as plt
-import seaborn as sns
 import numpy as np
-from sklearn import metrics, linear_model, ensemble, model_selection
-from sklearn.linear_model import Ridge
+from sklearn import model_selection
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeRegressor
-from sklearn.model_selection import RandomizedSearchCV, GridSearchCV
-from sklearn.metrics import mean_squared_error
+from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import mean_absolute_error as mae
-from sklearn.metrics import mean_squared_error, r2_score
 from sklearn.model_selection import cross_val_score
-from sklearn.pipeline import Pipeline
-from sklearn.impute import SimpleImputer
 from sklearn.svm import SVR
 
-from decision_tree import print_regression_solutions, print_regression_residuals, plot_regression_outcome
+from src.functions.regression_eval import print_regression_solutions, print_regression_residuals, plot_regression_outcome
 
 
 def runmodel(X, Y, model=SVR):

@@ -10,14 +10,14 @@ from skopt import gp_minimize
 from skopt import space
 from skopt.utils import use_named_args
 
-from src.functions.regression_eval import print_actual_vs_real, print_regression_residuals, plot_regression_outcome
+from src.functions.regression_eval import print_test_vs_real, print_regression_residuals, plot_regression_outcome
 from train_test_split import dataSplit, deNormalize
 
 
 if __name__ == '__main__':
 
     # Split data into train / test. Exclude Angle 60
-    x_train, y_train, x_test, y_test = dataSplit(exclude=60, scaler=MinMaxScaler())
+    x_train, y_train, x_test, y_test, scaling = dataSplit(exclude=45, scaler=MinMaxScaler())
     # GPR seemed to have the best performance when Min-max scaling of x data and log scale on y
 
 
@@ -28,8 +28,8 @@ if __name__ == '__main__':
     param_space = [
         space.Categorical(['squared_error', 'absolute_error', 'huber', 'quantile'], name='loss'),
         space.Real(0.00001, 0.1, name='learning_rate'),
-        space.Integer(10, 200, name='n_estimators'),
-        space.Integer(4, 6, name='max_depth'),
+        space.Integer(50, 200, name='n_estimators'),
+        space.Integer(3, 6, name='max_depth'),
         space.Real(0.00001, 0.1, name='alpha'),
     ]
 
@@ -72,7 +72,7 @@ if __name__ == '__main__':
         # Using logarithmic scale:
         ypred = np.exp(ypred)
         y_test = np.exp(y_test)
-        print_actual_vs_real(y_test, ypred)
+        print_test_vs_real(y_test, ypred)
         return y_test, ypred, regressor
 
     y_test, ypred, final_model = compare_trends(x_train, y_train, x_test, y_test)

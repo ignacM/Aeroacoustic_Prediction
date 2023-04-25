@@ -9,14 +9,14 @@ from skopt import gp_minimize
 from skopt import space
 from skopt.utils import use_named_args
 
-from src.functions.regression_eval import print_actual_vs_real, print_regression_residuals, plot_regression_outcome
-from train_test_split import dataSplit, deNormalize
+from src.functions.regression_eval import print_test_vs_real, print_regression_residuals, plot_regression_outcome
+from train_test_split_2 import dataSplit, deNormalize
 
 
 if __name__ == '__main__':
 
     # Split data into train / test. Exclude Angle 60
-    x_train, y_train, x_test, y_test = dataSplit(exclude=60, scaler=MinMaxScaler())
+    x_train, y_train, x_test, y_test, scaling = dataSplit(exclude=150, scaler=MinMaxScaler())
     # SVR seemed to have the best performance when Min-max scaling of x data and log scale on y
 
     # define a parameter space for SVR:
@@ -30,10 +30,10 @@ if __name__ == '__main__':
     param_names = ['C', 'epsilon', 'gamma', 'tol']
 
     param_space = [
-        space.Real(0.001, 0.5, name='C'),
-        space.Real(0.0000000001, 0.005, name='epsilon'),
+        space.Real(2, 10, name='C'),
+        space.Real(0.005, 0.05, name='epsilon'),
         space.Categorical(['scale'], name='gamma'),
-        space.Real(0.01, 0.05, name='tol')
+        space.Real(0.000000000001, 0.00005, name='tol')
     ]
 
     @use_named_args(param_space)
@@ -75,7 +75,7 @@ if __name__ == '__main__':
         # Using logarithmic scale:
         ypred = np.exp(ypred)
         y_test = np.exp(y_test)
-        print_actual_vs_real(y_test, ypred)
+        print_test_vs_real(y_test, ypred)
         return y_test, ypred, regressor
 
     y_test, ypred, final_model = compare_trends(x_train, y_train, x_test, y_test)
@@ -84,6 +84,7 @@ if __name__ == '__main__':
     print_regression_residuals(y_test, ypred, 'SVM Regressor')
 
     joblib.dump(final_model, '../models/SVM_regressor.pkl')
+    joblib.dump(scaling, '../models/scaler.pkl')
 
 
     # SVR_search = {

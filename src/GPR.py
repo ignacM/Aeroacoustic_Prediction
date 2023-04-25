@@ -10,14 +10,14 @@ from skopt import gp_minimize
 from skopt import space
 from skopt.utils import use_named_args
 
-from src.functions.regression_eval import print_actual_vs_real, print_regression_residuals, plot_regression_outcome
-from train_test_split import dataSplit, deNormalize
+from src.functions.regression_eval import print_test_vs_real, print_regression_residuals, plot_regression_outcome
+from train_test_split_2 import dataSplit, deNormalize
 
 
 if __name__ == '__main__':
 
     # Split data into train / test. Exclude Angle 180
-    x_train, y_train, x_test, y_test = dataSplit(exclude=150, scaler=MinMaxScaler())
+    x_train, y_train, x_test, y_test, scaling = dataSplit(exclude=45, scaler=MinMaxScaler())
     # GPR seemed to have the best performance when Min-max scaling of x data and log scale on y
     print(y_test)
 
@@ -75,7 +75,7 @@ if __name__ == '__main__':
         # Using logarithmic scale:
         ypred = np.exp(ypred)
         y_test = np.exp(y_test)
-        print_actual_vs_real(y_test, ypred)
+        print_test_vs_real(y_test, ypred)
         return y_test, ypred, regressor
 
     y_test, ypred, final_model = compare_trends(x_train, y_train, x_test, y_test)
@@ -84,6 +84,7 @@ if __name__ == '__main__':
     print_regression_residuals(y_test, ypred, 'GPR Regressor')
 
     joblib.dump(final_model, '../models/GPR_regressor.pkl')
+
 
 
 
