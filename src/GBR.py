@@ -5,6 +5,7 @@ from sklearn.preprocessing import MinMaxScaler
 from sklearn.ensemble import GradientBoostingRegressor
 import sklearn.gaussian_process.kernels as kernels
 from sklearn.model_selection import cross_val_score
+from sklearn.metrics import mean_absolute_error as mae
 
 from skopt import gp_minimize
 from skopt import space
@@ -17,7 +18,7 @@ from train_test_split import dataSplit, deNormalize
 if __name__ == '__main__':
 
     # Split data into train / test. Exclude Angle 60
-    x_train, y_train, x_test, y_test, scaling = dataSplit(exclude=45, scaler=MinMaxScaler())
+    x_train, y_train, x_test, y_test, scaling = dataSplit(exclude=135, scaler=MinMaxScaler())
     # GPR seemed to have the best performance when Min-max scaling of x data and log scale on y
 
 
@@ -27,10 +28,10 @@ if __name__ == '__main__':
 
     param_space = [
         space.Categorical(['squared_error', 'absolute_error', 'huber', 'quantile'], name='loss'),
-        space.Real(0.00001, 0.1, name='learning_rate'),
-        space.Integer(50, 200, name='n_estimators'),
-        space.Integer(3, 6, name='max_depth'),
-        space.Real(0.00001, 0.1, name='alpha'),
+        space.Real(0.01, 0.5, name='learning_rate'),
+        space.Integer(70, 100, name='n_estimators'),
+        space.Integer(2, 6, name='max_depth'),
+        space.Real(0.001, 0.5, name='alpha'),
     ]
 
     @use_named_args(param_space)
@@ -44,7 +45,7 @@ if __name__ == '__main__':
         return -np.mean(cross_val_score(regressor, x_train, y_train, cv=3, n_jobs=-1, scoring="neg_mean_absolute_error"))
 
     # Use Bayesian Optimization with Gaussian process to find function minimum
-    res_gp = gp_minimize(optimize_mae_function, dimensions=param_space, n_calls=40, verbose=10, n_initial_points=20)
+    res_gp = gp_minimize(optimize_mae_function, dimensions=param_space, n_calls=10, verbose=10, n_initial_points=5)
 
     # Save parameters fround in global minimum
     best_parameters = dict(zip(param_names, res_gp.x))
@@ -73,6 +74,15 @@ if __name__ == '__main__':
         ypred = np.exp(ypred)
         y_test = np.exp(y_test)
         print_test_vs_real(y_test, ypred)
+
+        y_train = np.exp(y_train)
+        ypred_train = np.exp(regressor.predict(x_train))
+        ypred_test = ypred
+
+        train_error = mae(y_train, ypred_train)
+        test_error = mae(y_test, ypred_test)
+        print('Train loss is:', train_error)
+        print('Test loss is:', test_error)
         return y_test, ypred, regressor
 
     y_test, ypred, final_model = compare_trends(x_train, y_train, x_test, y_test)

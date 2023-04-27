@@ -5,6 +5,7 @@ from sklearn.preprocessing import MinMaxScaler
 from sklearn.gaussian_process import GaussianProcessRegressor
 import sklearn.gaussian_process.kernels as kernels
 from sklearn.model_selection import cross_val_score
+from sklearn.metrics import mean_absolute_error as mae
 
 from skopt import gp_minimize
 from skopt import space
@@ -17,7 +18,7 @@ from train_test_split_2 import dataSplit, deNormalize
 if __name__ == '__main__':
 
     # Split data into train / test. Exclude Angle 180
-    x_train, y_train, x_test, y_test, scaling = dataSplit(exclude=45, scaler=MinMaxScaler())
+    x_train, y_train, x_test, y_test, scaling = dataSplit(exclude=135, scaler=MinMaxScaler())
     # GPR seemed to have the best performance when Min-max scaling of x data and log scale on y
     print(y_test)
 
@@ -76,6 +77,15 @@ if __name__ == '__main__':
         ypred = np.exp(ypred)
         y_test = np.exp(y_test)
         print_test_vs_real(y_test, ypred)
+
+        y_train = np.exp(y_train)
+        ypred_train = np.exp(regressor.predict(x_train))
+        ypred_test = ypred
+
+        train_error = mae(y_train, ypred_train)
+        test_error = mae(y_test, ypred_test)
+        print('Train loss is:', train_error)
+        print('Test loss is:', test_error)
         return y_test, ypred, regressor
 
     y_test, ypred, final_model = compare_trends(x_train, y_train, x_test, y_test)

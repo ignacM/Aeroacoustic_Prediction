@@ -4,16 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bd522123-228b-43e4-86a8-023a5cb99b76" name="Changes" comment="Introduced Kernel function Optimisation into Gaussian P regressor">
+    <list default="true" id="bd522123-228b-43e4-86a8-023a5cb99b76" name="Changes" comment="Model parameters tweaking">
       <change afterPath="$PROJECT_DIR$/src/Run_model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/predicting.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Run_individual_array.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Run_individual_array.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Run_model.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Run_model_2.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Run_model_2_GB.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model_GBR.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Run_model_2_GP.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model_GPR.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SVR_search.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/SVR_search.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/decision_tree_final.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/run_final_model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gradientbooster.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/gradientbooster.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model_comparison_pipeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model_comparison_pipeline.py" afterDir="false" />
@@ -239,14 +237,8 @@
       <workItem from="1682267768212" duration="2497000" />
       <workItem from="1682270289615" duration="3818000" />
       <workItem from="1682274565956" duration="1508000" />
-      <workItem from="1682449323418" duration="595000" />
-    </task>
-    <task id="LOCAL-00001" summary="ADD Created project">
-      <created>1670209834895</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1670209834895</updated>
+      <workItem from="1682449323418" duration="4395000" />
+      <workItem from="1682608866061" duration="4535000" />
     </task>
     <task id="LOCAL-00002" summary="ADD new branch with modified dataset">
       <created>1670213489914</created>
@@ -577,7 +569,21 @@
       <option name="project" value="LOCAL" />
       <updated>1679633559102</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="Created predicting.py for exploring model performance without validation data">
+      <created>1682449985285</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1682449985285</updated>
+    </task>
+    <task id="LOCAL-00050" summary="Model parameters tweaking">
+      <created>1682450085137</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1682450085137</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -627,8 +633,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added new working models" />
-    <MESSAGE value="Found hyperparameters of SVM. &#10;Polar array: &#10;[C: 6-8, epsilon: 0.12-0.2]&#10;Azimuthal array: [C:35-70, epsilon: 0.15-0.3]" />
     <MESSAGE value="added to compare different ml models with given hyperparameters." />
     <MESSAGE value="fixed variance and bias estimations &amp; more readable code" />
     <MESSAGE value="refactor to study and compare bayesian optimization &amp; bayesian optimization with gaussian process" />
@@ -652,7 +656,9 @@
     <MESSAGE value="Added data visualisation" />
     <MESSAGE value="Added comparison between different regressors" />
     <MESSAGE value="Introduced Kernel function Optimisation into Gaussian P regressor" />
-    <option name="LAST_COMMIT_MESSAGE" value="Introduced Kernel function Optimisation into Gaussian P regressor" />
+    <MESSAGE value="Created predicting.py for exploring model performance without validation data" />
+    <MESSAGE value="Model parameters tweaking" />
+    <option name="LAST_COMMIT_MESSAGE" value="Model parameters tweaking" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Aeroacoustic_Prediction$decision_tree.coverage" NAME="decision_tree Coverage Results" MODIFIED="1670536426547" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -668,6 +674,7 @@
     <SUITE FILE_PATH="coverage/Aeroacoustic_Prediction$regression_eval.coverage" NAME="regression_eval Coverage Results" MODIFIED="1678201837108" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/functions" />
     <SUITE FILE_PATH="coverage/Aeroacoustic_Prediction$model_vs_l2.coverage" NAME="model_vs_l2 Coverage Results" MODIFIED="1678130988552" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/Aeroacoustic_Prediction$model_SVR.coverage" NAME="model_SVR Coverage Results" MODIFIED="1678051796822" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/Aeroacoustic_Prediction$GBR.coverage" NAME="GBR Coverage Results" MODIFIED="1682619114160" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/Aeroacoustic_Prediction$data_processing.coverage" NAME="data_processing Coverage Results" MODIFIED="1677959546814" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/Aeroacoustic_Prediction$Run_model_2.coverage" NAME="Run_model_2 Coverage Results" MODIFIED="1677888299404" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Aeroacoustic_Prediction$Run_model_2_GP.coverage" NAME="Run_model_2_GP Coverage Results" MODIFIED="1677686577850" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
