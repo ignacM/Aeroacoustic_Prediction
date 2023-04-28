@@ -24,16 +24,16 @@ if __name__ == '__main__':
 
     # Define parameter names and space
 
-    param_names = ['loss', 'learning_rate', 'n_estimators', 'max_depth', 'alpha']
+    param_names = ['learning_rate', 'n_estimators', 'alpha']
 
     param_space = [
-        space.Categorical(['squared_error', 'absolute_error', 'huber', 'quantile'], name='loss'),
-        space.Real(0.01, 0.5, name='learning_rate'),
-        space.Integer(70, 100, name='n_estimators'),
-        space.Integer(2, 6, name='max_depth'),
-        space.Real(0.001, 0.5, name='alpha'),
+        space.Real(0.15, 0.25, name='learning_rate'),
+        space.Integer(25, 30, name='n_estimators'),
+        space.Real(0.4, 0.5, name='alpha'),
     ]
 
+    """space.Integer(2, 3, name='max_depth'),"""
+    """space.Categorical(['squared_error', 'absolute_error', 'huber', 'quantile'], name='loss'),"""
     @use_named_args(param_space)
     def optimize_mae_function(**params):
         """
@@ -41,14 +41,15 @@ if __name__ == '__main__':
         :param params:
         :return:
         """
-        regressor = GradientBoostingRegressor(**params)
+        regressor = GradientBoostingRegressor(**params, max_depth=3, loss='quantile')
         return -np.mean(cross_val_score(regressor, x_train, y_train, cv=3, n_jobs=-1, scoring="neg_mean_absolute_error"))
 
     # Use Bayesian Optimization with Gaussian process to find function minimum
-    res_gp = gp_minimize(optimize_mae_function, dimensions=param_space, n_calls=10, verbose=10, n_initial_points=5)
+    res_gp = gp_minimize(optimize_mae_function, dimensions=param_space, n_calls=30, verbose=10, n_initial_points=20)
 
     # Save parameters fround in global minimum
     best_parameters = dict(zip(param_names, res_gp.x))
+    print(res_gp.x)
     print(best_parameters)
 
 

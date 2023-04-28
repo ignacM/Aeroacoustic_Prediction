@@ -24,12 +24,12 @@ if __name__ == '__main__':
 
     # Define parameter names and space
     param_names = ['alpha']
-    Kernel = kernels.ConstantKernel(1, constant_value_bounds=(1e-2, 10.0))\
-             * kernels.RBF(1, length_scale_bounds=(1e-2, 10.0))
+    Kernel = kernels.ConstantKernel(100, constant_value_bounds=(1e2, 1e3))\
+             * kernels.RBF(1, length_scale_bounds=(1e-1, 5e-1))
 
     # define a parameter space for GaussianProcessR:
     param_space = [
-        space.Real(0.00000000001, 0.01, prior="uniform", name="alpha")
+        space.Real(0.0001, 0.01, prior="uniform", name="alpha")
                    ]
 
     # Kernel = kernels.ConstantKernel(constant_value=1.4)
@@ -48,7 +48,7 @@ if __name__ == '__main__':
         return -np.mean(cross_val_score(regressor, x_train, y_train, cv=3, n_jobs=-1, scoring="neg_mean_absolute_error"))
 
     # Use Bayesian Optimization with Gaussian process to find function minimum
-    res_gp = gp_minimize(optimize_mae_function, dimensions=param_space, n_calls=40, verbose=10, n_initial_points=20)
+    res_gp = gp_minimize(optimize_mae_function, dimensions=param_space, n_calls=5, verbose=10, n_initial_points=5)
 
     # Save parameters fround in global minimum
     best_parameters = dict(zip(param_names, res_gp.x))

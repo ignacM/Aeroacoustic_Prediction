@@ -17,32 +17,35 @@ if __name__ == '__main__':
     scaler = joblib.load('../models/scaler.pkl')
     azimuthal_df = pd.read_csv('../Data/dec22/x_validation_polar.csv')
 
-
+    # Selecting Features data and Scaling
     azi_225_data = azimuthal_df.iloc[:23, 1:3]
     azi_225_data_scaled = scaler.transform(azi_225_data)
+
     azi_825_data = azimuthal_df.iloc[23:, 1:3]
+    azi_825_data_scaled = scaler.transform(azi_825_data)
 
-
-
+    # Selecting Real data
     azi_225_actual = azimuthal_df.iloc[:23, 3]
-    print(azi_225_actual)
     azi_825_actual = azimuthal_df.iloc[23:, 3]
+    azi_825_actual = azi_825_actual.reset_index(drop=True)
 
+
+    # Predicting 22.5 degrees data
     svm225 = np.exp(svm.predict(azi_225_data_scaled).tolist())
     gpr225 = np.exp(gpr.predict(azi_225_data_scaled).tolist())
     gbr225 = np.exp(gbr.predict(azi_225_data_scaled).tolist())
 
-    """predictions225 = [0, 0, 0]
-    predictions225[0] = svm225
-    predictions225[1] = gpr225
-    predictions225[2] = gbr225"""
+    # Predicting 22.5 degrees data
+    svm825 = np.exp(svm.predict(azi_825_data_scaled).tolist())
+    gpr825 = np.exp(gpr.predict(azi_825_data_scaled).tolist())
+    gbr825 = np.exp(gbr.predict(azi_825_data_scaled).tolist())
+
+    # Plotting 22.5 degrees predictions
+    predictions_names = ['SVM', 'GPR', 'GBR']
     predictions225 = [svm225, gpr225, gbr225]
-    predictions225_names = ['SVM', 'GPR', 'GBR']
 
-
-
-    reval.plot_preds_vs_real(predictions225, azi_225_actual, predictions225_names)
-
+    reval.plot_preds_vs_real(predictions225, azi_225_actual, predictions_names)
+    print('22.5 Degrees Loss:')
 
     svm_val_error = mae(azi_225_actual, svm225)
     print('SVM Validation loss is:', svm_val_error)
@@ -52,6 +55,20 @@ if __name__ == '__main__':
 
     gbr_val_error = mae(azi_225_actual, gbr225)
     print('GBR Validation loss is:', gbr_val_error)
+    print('........')
 
+    # Plotting 82.5 degrees predictions
+    predictions825 = [svm825, gpr825, gbr825]
 
+    reval.plot_preds_vs_real(predictions825, azi_825_actual, predictions_names)
+    print('82.5 Degrees Loss:')
+
+    svm_val_error = mae(azi_825_actual, svm825)
+    print('SVM Validation loss is:', svm_val_error)
+
+    gpr_val_error = mae(azi_825_actual, gpr825)
+    print('GPR Validation loss is:', gpr_val_error)
+
+    gbr_val_error = mae(azi_825_actual, gbr825)
+    print('GBR Validation loss is:', gbr_val_error)
 
