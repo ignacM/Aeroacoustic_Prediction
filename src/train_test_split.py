@@ -44,12 +44,12 @@ def dataSplit(exclude=60, scaler=MinMaxScaler()):
     Y_data['db'] = np.log(Y_data['db'])
 
     scaler = scaler
+    df = df[['theta', 'degree']]
     df = scaler.fit_transform(df)
-    df = pd.DataFrame(df, columns=['db', 'theta', 'degree', 'exclude'])
+    df = pd.DataFrame(df, columns=['theta', 'degree'])
     df['exclude'] = exclude_col
 
-    X_data = df.drop(['db'], axis=1)
-    X_data = X_data.to_numpy()
+    X_data = df.to_numpy()
 
     x_train = X_data[(X_data[:, -1] == 0), 0:2]
     x_test = X_data[(X_data[:, -1] == 1), 0:2]
@@ -57,8 +57,24 @@ def dataSplit(exclude=60, scaler=MinMaxScaler()):
     y_train = Y_data.loc[(Y_data['exclude'] == 0), 'db']
     y_test = Y_data.loc[(Y_data['exclude'] == 1), 'db']
 
-    return x_train, y_train, x_test, y_test
+    return x_train, y_train, x_test, y_test, scaler
 
+
+def allData(scaler=MinMaxScaler()):
+    path = '..\Data\dec22\data_input.xlsx'
+    # Sheet name either azi or pol
+    df = pd.read_excel(path, sheet_name='pol')
+
+
+    Y_data = df.drop(['theta', 'degree'], axis=1)
+    Y_data['db'] = np.log(Y_data['db'])
+
+    X_data = df.drop(['db'], axis=1)
+    X_data = X_data[['theta', 'degree']]
+    X_data = scaler.fit_transform(X_data)
+    X_data = pd.DataFrame(X_data, columns=['theta', 'degree'])
+
+    return X_data, Y_data, scaler
 
 if __name__ == '__main__':
 
