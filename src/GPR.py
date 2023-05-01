@@ -6,13 +6,14 @@ from sklearn.gaussian_process import GaussianProcessRegressor
 import sklearn.gaussian_process.kernels as kernels
 from sklearn.model_selection import cross_val_score
 from sklearn.metrics import mean_absolute_error as mae
+import matplotlib.pyplot as plt
 
 from skopt import gp_minimize
 from skopt import space
 from skopt.utils import use_named_args
 
 from src.functions.regression_eval import print_test_vs_real, print_regression_residuals, plot_regression_outcome
-from train_test_split_2 import dataSplit, deNormalize
+from train_test_split import dataSplit, deNormalize
 
 
 if __name__ == '__main__':
@@ -20,7 +21,6 @@ if __name__ == '__main__':
     # Split data into train / test. Exclude Angle 180
     x_train, y_train, x_test, y_test, scaling = dataSplit(exclude=135, scaler=MinMaxScaler())
     # GPR seemed to have the best performance when Min-max scaling of x data and log scale on y
-    print(y_test)
 
     # Define parameter names and space
     param_names = ['alpha']
@@ -92,6 +92,37 @@ if __name__ == '__main__':
 
     plot_regression_outcome(y_test, ypred, 'GPR Regressor')
     print_regression_residuals(y_test, ypred, 'GPR Regressor')
+
+    def gp_distribution_plot():
+        X = np.arange(1,24,1)
+        y = y_test
+        x_train = np.arange(1,24,3)
+        y_train = [y_test[0], y_test[2], y_test[5], y_test[8], y_test[11], y_test[14], y_test[17], y_test[20], y_test[21]]
+
+        mean_prediction, std_prediction = final_model.predict(x_test, return_std=True)
+        mean_prediction = np.exp(mean_prediction)
+        print(mean_prediction)
+
+        plt.plot(X, y, label=r"$f(x) = x \sin(x)$", linestyle="dotted")
+        plt.scatter(x_train, y_train, label="Observations")
+        plt.plot(X, mean_prediction, label="Mean prediction")
+        plt.fill_between(
+            np.arange(1,24,1),
+            mean_prediction - 1.96 * std_prediction,
+            mean_prediction + 1.96 * std_prediction,
+            alpha=0.5,
+            label=r"95% confidence interval",
+        )
+        plt.legend()
+        plt.xlabel("$x$")
+        plt.ylabel("$f(x)$")
+        _ = plt.title("Gaussian process regression on noise-free dataset")
+        plt.show()
+
+        return
+
+
+    gp_distribution_plot()
 
     joblib.dump(final_model, '../models/GPR_regressor.pkl')
 
