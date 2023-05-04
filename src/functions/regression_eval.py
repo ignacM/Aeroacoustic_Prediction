@@ -4,14 +4,13 @@ import seaborn as sns
 import numpy as np
 from sklearn import metrics, linear_model, ensemble, model_selection, tree
 from sklearn.pipeline import Pipeline
-from sklearn.impute import SimpleImputer
+
 from graphviz import Source
 
 from sklearn.linear_model import Ridge
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeRegressor
-from sklearn.model_selection import RandomizedSearchCV, GridSearchCV
-from sklearn.metrics import mean_squared_error
+
 from sklearn.metrics import mean_absolute_error as mae
 from sklearn.metrics import mean_squared_error, r2_score
 from sklearn.model_selection import cross_val_score
@@ -143,7 +142,7 @@ def print_regression_residuals(ytest, ypred, method):
     return
 
 
-def print_actual_vs_real(y_test, y_pred):
+def print_test_vs_real(y_test, y_pred):
     """
     Plots a graph of test vs predicted values. Fits line to points.
     :param y_test:
@@ -151,11 +150,13 @@ def print_actual_vs_real(y_test, y_pred):
     :return:
     """
     fig, ax = plt.subplots(figsize=(7, 6))
+    error_value = round(metrics.mean_absolute_error(y_test, y_pred), 2)
     # Plotting test vs predicted data
     x_ax = range(len(y_test))
     plt.plot(x_ax, y_test, linewidth=1.5, label="Actual data")
     plt.plot(x_ax, y_pred, linewidth=1.5, label="Predicted data")
-    plt.title("Actual sound data vs Predicted sound data")
+    plt.suptitle("Actual sound data vs Predicted sound data", fontweight="bold", fontsize=15)
+    plt.title("Mean absolute error: %.2f" % error_value)
     plt.xlabel('Microphone number')
     plt.ylabel('Sound Pressure Level, dB')
     plt.legend(loc='best', fancybox=True, shadow=True)
@@ -192,7 +193,7 @@ def print_predictions(y_pred, ypred_labels):
     # Plotting test vs predicted data
     for item in range(len(y_pred)):
         plt.plot(y_pred[item], linewidth=1.5)
-    plt.title("Predicted sound data")
+    plt.title("Predicted sound data", fontweight="bold", fontsize=15)
     plt.xlabel('Microphone number')
     plt.ylabel('Sound Pressure Level, dB')
     plt.legend(ypred_labels)
@@ -200,4 +201,56 @@ def print_predictions(y_pred, ypred_labels):
     plt.show()
 
 
+def plot_preds_vs_real(predictions, real, prediction_labels, suptitle):
+
+    fig, ax = plt.subplots(figsize=(7, 6))
+    for item in range(len(predictions)):
+        plt.plot(predictions[item], linewidth=1.25)
+        # plt.scatter(np.arange(0, 23, 1), predictions[item])
+    plt.plot(real, linewidth=1.25)
+    plt.suptitle("Predicted sound data", fontweight="bold", fontsize=16)
+    plt.title(suptitle, fontweight="bold", fontsize=14)
+    plt.xlabel('Microphone number', fontsize=14)
+    plt.xticks(fontsize=14)
+    plt.ylabel('Sound Pressure Level, dB', fontsize=14)
+    plt.yticks(fontsize=14)
+    try:
+        prediction_labels = np.append(prediction_labels, 'Actual Data')
+        plt.legend(prediction_labels, fontsize=13)
+    except:
+        pass
+    plt.grid(False)
+    plt.show()
+
+
+def plot_preds_vs_real_2(predictions, real, prediction_labels, suptitle):
+
+    fig, ax = plt.subplots(figsize=(7, 6))
+    for item in range(len(predictions)):
+        if item < 2:
+         plt.plot(predictions[item], linewidth=1.25)
+        elif item ==2:
+            x = np.arange(0, 23, 1)
+            poly = np.polyfit(x, predictions[item], deg=4)
+            ax.plot(np.polyval(poly, x))
+        # plt.scatter(np.arange(0, 23, 1), predictions[item])
+    plt.plot(real, linewidth=1.25)
+    plt.suptitle("Predicted sound data", fontweight="bold", fontsize=16)
+    plt.title(suptitle, fontweight="bold", fontsize=14)
+    plt.xlabel('Microphone number', fontsize=14)
+    plt.xticks(fontsize=14)
+    plt.ylabel('Sound Pressure Level, dB', fontsize=14)
+    plt.yticks(fontsize=14)
+    try:
+        prediction_labels = np.append(prediction_labels, 'Actual Data')
+        plt.legend(prediction_labels, fontsize=13)
+    except:
+        pass
+    plt.grid(False)
+    plt.show()
+
+def r2(actual, predicted, model):
+    score = r2_score(actual, predicted)
+    print("%s R-squared:" %model, score)
+    return
 
