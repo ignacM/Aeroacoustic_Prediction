@@ -1,7 +1,7 @@
 import numpy as np
 import joblib
 
-from sklearn.preprocessing import MinMaxScaler
+from sklearn.preprocessing import MinMaxScaler, StandardScaler
 from sklearn.gaussian_process import GaussianProcessRegressor
 import sklearn.gaussian_process.kernels as kernels
 from sklearn.model_selection import cross_val_score
@@ -28,9 +28,13 @@ if __name__ == '__main__':
              * kernels.RBF(1, length_scale_bounds=(1e-1, 5e-1))
 
     # define a parameter space for GaussianProcessR:
-    param_space = [
+    """param_space = [
         space.Real(0.0001, 0.01, prior="uniform", name="alpha")
-                   ]
+                   ]"""
+
+    param_space = [
+        space.Real(0.000001, 0.1, prior="uniform", name="alpha")
+    ]
 
     # Kernel = kernels.ConstantKernel(constant_value=1.4)
     # Kernel = kernels.Exponentiation(kernel=ConstantKernel(), exponent=1.1)
@@ -122,9 +126,9 @@ if __name__ == '__main__':
         return
 
 
-    gp_distribution_plot()
+    # gp_distribution_plot()
 
-    joblib.dump(final_model, '../models/GPR_regressor.pkl')
+    joblib.dump(final_model, '../models/GPR_regressor_azi.pkl')
 
 
 

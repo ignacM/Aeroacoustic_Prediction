@@ -1,7 +1,7 @@
 import numpy as np
 import joblib
 
-from sklearn.preprocessing import MinMaxScaler
+from sklearn.preprocessing import MinMaxScaler, StandardScaler
 from sklearn.ensemble import GradientBoostingRegressor
 import sklearn.gaussian_process.kernels as kernels
 from sklearn.model_selection import cross_val_score
@@ -26,10 +26,17 @@ if __name__ == '__main__':
 
     param_names = ['learning_rate', 'n_estimators', 'alpha']
 
-    param_space = [
-        space.Real(0.15, 0.25, name='learning_rate'),
-        space.Integer(25, 30, name='n_estimators'),
+    """param_space = [
+        space.Real(0.14, 0.17, name='learning_rate'),
+        space.Integer(30, 40, name='n_estimators'),
         space.Real(0.4, 0.5, name='alpha'),
+    ]"""
+
+    param_space = [
+        space.Real(0.4, 0.7, name='learning_rate'),
+        space.Integer(30, 40, name='n_estimators'),
+        space.Real(0.3, 0.6, name='alpha'),
+
     ]
 
     """space.Integer(2, 3, name='max_depth'),"""
@@ -41,7 +48,7 @@ if __name__ == '__main__':
         :param params:
         :return:
         """
-        regressor = GradientBoostingRegressor(**params, max_depth=3, loss='quantile')
+        regressor = GradientBoostingRegressor(**params, loss='huber', max_depth=3)
         return -np.mean(cross_val_score(regressor, x_train, y_train, cv=3, n_jobs=-1, scoring="neg_mean_absolute_error"))
 
     # Use Bayesian Optimization with Gaussian process to find function minimum
@@ -91,7 +98,7 @@ if __name__ == '__main__':
     plot_regression_outcome(y_test, ypred, 'GBR Regressor')
     print_regression_residuals(y_test, ypred, 'GBR Regressor')
 
-    joblib.dump(final_model, '../models/GBR_regressor.pkl')
+    joblib.dump(final_model, '../models/GBR_regressor_azi.pkl')
 
 
 

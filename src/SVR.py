@@ -1,7 +1,7 @@
 import numpy as np
 import joblib
 
-from sklearn.preprocessing import MinMaxScaler
+from sklearn.preprocessing import MinMaxScaler, StandardScaler
 from sklearn.svm import SVR
 from sklearn.model_selection import cross_val_score
 from sklearn.metrics import mean_absolute_error as mae
@@ -11,7 +11,7 @@ from skopt import space
 from skopt.utils import use_named_args
 
 from src.functions.regression_eval import print_test_vs_real, print_regression_residuals, plot_regression_outcome
-from train_test_split_2 import dataSplit, deNormalize, allData
+from train_test_split import dataSplit, deNormalize
 
 
 if __name__ == '__main__':
@@ -30,11 +30,18 @@ if __name__ == '__main__':
     # Define parameter names and space
     param_names = ['C', 'epsilon', 'gamma', 'tol']
 
-    param_space = [
+    """param_space = [
         space.Real(2, 10, name='C'),
         space.Real(0.005, 0.05, name='epsilon'),
         space.Categorical(['scale'], name='gamma'),
         space.Real(0.000000000001, 0.00005, name='tol')
+    ]"""
+
+    param_space = [
+        space.Real(4, 10, name='C'),
+        space.Real(0.001, 0.01, name='epsilon'),
+        space.Categorical(['scale'], name='gamma'),
+        space.Real(0.001, 0.01, name='tol')
     ]
 
     @use_named_args(param_space)
@@ -129,8 +136,8 @@ if __name__ == '__main__':
     # regressor = SVR(**best_parameters)
     # regressor.fit(x_train, y_train)
 
-    joblib.dump(final_model, '../models/SVM_regressor.pkl')
-    joblib.dump(scaling, '../models/scaler.pkl')
+    joblib.dump(final_model, '../models/SVM_regressor_azi.pkl')
+    joblib.dump(scaling, '../models/scaler_azi.pkl')
 
 
     # SVR_search = {
