@@ -3,7 +3,7 @@ import numpy as np
 from tree_search import runmodel
 from decision_tree_final import runTree
 from sklearn.tree import DecisionTreeRegressor
-from decision_tree import print_actual_vs_real
+from ..functions.regression_eval import print_test_vs_real
 from gradientbooster import run_model_variance, optimize
 from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.svm import SVR, LinearSVR, NuSVR
@@ -83,43 +83,6 @@ if __name__ == '__main__':
     print("test score: %s" % opt.score(x_test, y_test))
     print("best params: %s" % str(opt.best_params_))
 
-    # # define a parameter space for SVR:
-    # # https://uk.mathworks.com/help/stats/fitcsvm.html?s_tid=srchtitle#namevaluepairarguments
-    # # C: manual box constraint
-    # """param_space = [space.Real(0.25, 10, name='C'),
-    #                space.Real(0.01, 1, name='epsilon'),
-    #                space.Categorical(['auto', 'scale'], name='gamma')]"""
-    # param_space = [space.Real(65, 90, name='C'),
-    #                space.Real(0.350, 0.500, name='epsilon'),
-    #                space.Categorical(['auto', 'scale'], name='gamma')
-    #                ]
-    #
-    # param_names = ['C', 'epsilon', 'gamma']
-    #
-    #
-    # def gaussian_kernel(X, Y):
-    #     return np.exp(-abs(abs(X-Y))**2)
-    #
-    # @use_named_args(param_space)
-    # def optimize_2(**params):
-    #     regressor = SVR(**params)
-    #     return -np.mean(cross_val_score(regressor, x_train, y_train, cv=5, n_jobs=-1, scoring="neg_mean_absolute_error"))
-    #
-    # # inside the main function
-    # res_gp = gp_minimize(optimize_2, dimensions=param_space, n_calls=50, verbose=10, n_initial_points=20)
-    #
-    # best_parameters = dict(zip(param_names, res_gp.x))
-    # print(best_parameters)
-    #
-    # def compare_trends(x_train, y_train, x_test, y_test):
-    #     tre = SVR(**best_parameters)
-    #     tre.fit(x_train, y_train)
-    #     ypred = tre.predict(x_test)
-    #
-    #     print_actual_vs_real(y_test, ypred)
-    #     return
-    #
-    # compare_trends(x_train, y_train, x_test, y_test)
 
 
 
