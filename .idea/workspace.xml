@@ -4,28 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bd522123-228b-43e4-86a8-023a5cb99b76" name="Changes" comment="Added plots for both polar and azimuthal array">
-      <change afterPath="$PROJECT_DIR$/src/Run_model.py" afterDir="false" />
+    <list default="true" id="bd522123-228b-43e4-86a8-023a5cb99b76" name="Changes" comment="Rearranging structure">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Run_individual_array.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Run_individual_array.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Run_model.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Run_model_2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Run_model_2_GB.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model_GBR.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Run_model_2_GP.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model_GPR.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decision_tree_final.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/run_final_model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradientbooster.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/gradientbooster.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model_comparison_pipeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model_comparison_pipeline.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/GBR_regressor.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/models/GBR_regressor.pkl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/GPR_regressor.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/models/GPR_regressor.pkl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/SVM_regressor.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/models/SVM_regressor.pkl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/scaler.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/models/scaler.pkl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GBR.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/GBR.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GPR.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/GPR.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SVR.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/SVR.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/functions/regression_eval.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions/regression_eval.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/train_test_split.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/train_test_split.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tree_search.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tree_search.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,22 +48,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/ignac/PycharmProjects/Aeroacoustic_Prediction/src",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ignac/PycharmProjects/Aeroacoustic_Prediction/src&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\ignac\PycharmProjects\Aeroacoustic_Prediction\src" />
@@ -98,7 +78,7 @@
       <recent name="C:\Users\ignac\PycharmProjects\Aeroacoustic_Prediction\Input\Data_dec22" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.SVR">
     <configuration name="SVR" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="pythonProject2" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -644,7 +624,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="reformat project structure" />
     <MESSAGE value="added new functions and fixed de-normalization" />
     <MESSAGE value="Simplified regression_eval.py for evaluation functions and kernels.py for reproducible SVM and Gaussian Process Regression Kernels" />
     <MESSAGE value="added train_test_split.py to have a centered training data manipulation" />
@@ -669,6 +648,7 @@
     <MESSAGE value="Replaced train_test_split" />
     <MESSAGE value="Added plot of probability distribution" />
     <MESSAGE value="Added plots for both polar and azimuthal array" />
+    <MESSAGE value="Revert &quot;Rearranging structure&quot;&#10;&#10;This reverts commit 44c035b356d643d36ee1c4daad28fea670876b71." />
     <option name="LAST_COMMIT_MESSAGE" value="Added plots for both polar and azimuthal array" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
