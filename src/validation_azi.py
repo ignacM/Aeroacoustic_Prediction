@@ -65,7 +65,7 @@ if __name__ == '__main__':
 
     reval.r2(pol_225_actual, svm225, 'SVM')
     reval.r2(pol_225_actual, gpr225, 'GPR')
-    reval.r2(pol_225_actual, gbr225, 'GPR')
+    reval.r2(pol_225_actual, gbr225, 'GBR')
     print('........')
 
 
@@ -76,19 +76,19 @@ if __name__ == '__main__':
     reval.plot_preds_vs_real(predictions825, pol_825_actual, predictions_names, '82.5 degrees')
     print('82.5 Degrees Loss:')
 
-    svm_val_error = mae(pol_225_actual, svm825)
+    svm_val_error = mae(pol_825_actual, svm825)
     print('SVM Validation loss is:', svm_val_error)
 
-    gpr_val_error = mae(pol_225_actual, gpr825)
+    gpr_val_error = mae(pol_825_actual, gpr825)
     print('GPR Validation loss is:', gpr_val_error)
 
-    gbr_val_error = mae(pol_225_actual, gbr825)
+    gbr_val_error = mae(pol_825_actual, gbr825)
     print('GBR Validation loss is:', gbr_val_error)
     print('........')
 
     reval.r2(pol_825_actual, svm825, 'SVM')
     reval.r2(pol_825_actual, gpr825, 'GPR')
-    reval.r2(pol_825_actual, gbr825, 'GPR')
+    reval.r2(pol_825_actual, gbr825, 'GBR')
 
     """# Predicting 22.5 degrees data
     svm225 = np.exp(svm_azi.predict(azi_225_data_scaled).tolist())

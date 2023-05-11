@@ -1,24 +1,14 @@
 import pandas as pd
 import numpy as np
-from tree_search import runmodel
-from decision_tree_final import runTree
-from sklearn.tree import DecisionTreeRegressor
-from decision_tree import print_actual_vs_real
-from gradientbooster import run_model_variance, optimize
+from src.functions.regression_eval import print_actual_vs_real
 from sklearn.ensemble import GradientBoostingRegressor
-import xgboost as xgb
-from sklearn.svm import SVR
 from skopt import gp_minimize, BayesSearchCV
 from skopt import space
 from sklearn.model_selection import cross_val_score
-from sklearn import ensemble
 from skopt.utils import use_named_args
 from sklearn.pipeline import Pipeline
 
-from sklearn.gaussian_process import GaussianProcessRegressor
-from sklearn.gaussian_process.kernels import DotProduct, WhiteKernel, ConstantKernel, Exponentiation, RBF
-
-from sklearn.preprocessing import StandardScaler, MinMaxScaler
+from sklearn.preprocessing import MinMaxScaler
 
 if __name__ == '__main__':
     # Dividing data between X and Y

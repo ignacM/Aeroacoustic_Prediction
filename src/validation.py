@@ -48,8 +48,8 @@ if __name__ == '__main__':
     predictions225 = [svm225, gpr225, gbr225]
     predictions225_dataframe = pd.DataFrame(predictions225, index=predictions_names)
 
-    reval.plot_preds_vs_real(predictions225, pol_225_actual, predictions_names, '22.5 degrees')
-    reval.plot_regression_outcome(pol_225_actual, svm225, 'SVM Regressor')
+    reval.plot_preds_vs_real_2(predictions225, pol_225_actual, predictions_names, '22.5 degrees')
+    # reval.plot_regression_outcome(pol_225_actual, svm225, 'SVM Regressor')
     reval.print_regression_residuals(pol_225_actual, svm225, 'SVM Regressor')
 
     print('22.5 Degrees Loss:')
@@ -65,7 +65,7 @@ if __name__ == '__main__':
 
     reval.r2(pol_225_actual, svm225, 'SVM')
     reval.r2(pol_225_actual, gpr225, 'GPR')
-    reval.r2(pol_225_actual, gbr225, 'GPR')
+    reval.r2(pol_225_actual, gbr225, 'GBR')
     print('........')
 
 
@@ -73,22 +73,27 @@ if __name__ == '__main__':
     predictions825 = [svm825, gpr825, gbr825]
     predictions825_dataframe = pd.DataFrame(predictions825, index=predictions_names)
 
-    reval.plot_preds_vs_real(predictions825, pol_825_actual, predictions_names, '82.5 degrees')
+    reval.plot_preds_vs_real_2(predictions825, pol_825_actual, predictions_names, '82.5 degrees')
     print('82.5 Degrees Loss:')
 
-    svm_val_error = mae(pol_225_actual, svm825)
+    svm_val_error = mae(pol_825_actual, svm825)
     print('SVM Validation loss is:', svm_val_error)
 
-    gpr_val_error = mae(pol_225_actual, gpr825)
+    gpr_val_error = mae(pol_825_actual, gpr825)
     print('GPR Validation loss is:', gpr_val_error)
 
-    gbr_val_error = mae(pol_225_actual, gbr825)
+    gbr_val_error = mae(pol_825_actual, gbr825)
     print('GBR Validation loss is:', gbr_val_error)
     print('........')
 
     reval.r2(pol_825_actual, svm825, 'SVM')
     reval.r2(pol_825_actual, gpr825, 'GPR')
     reval.r2(pol_825_actual, gbr825, 'GPR')
+
+    reval.plot_regression_outcome(pol_825_actual, svm825, 'SVM Regressor')
+    reval.plot_regression_outcome(pol_825_actual, gpr825, 'GPR Regressor')
+    reval.plot_regression_outcome(pol_825_actual, gbr825, 'GBR Regressor')
+
 
     """# Predicting 22.5 degrees data
     svm225 = np.exp(svm_azi.predict(azi_225_data_scaled).tolist())

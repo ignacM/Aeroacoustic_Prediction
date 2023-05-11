@@ -1,8 +1,4 @@
 from sklearn.ensemble import GradientBoostingRegressor
-from decision_tree import print_actual_vs_real
-from decision_tree import print_regression_solutions
-from sklearn.pipeline import make_pipeline
-from sklearn.preprocessing import StandardScaler
 from mlxtend.evaluate import bias_variance_decomp
 
 
@@ -11,11 +7,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_absolute_error as mae
 from sklearn.model_selection import cross_val_score
 import numpy as np
-from sklearn.linear_model import SGDRegressor
-from sklearn import model_selection, metrics, ensemble
-from sklearn.model_selection import KFold
-from skopt import gp_minimize
-from skopt import space
+from sklearn import ensemble
+
 
 def run_model_variance(X, Y, parameters, model=GradientBoostingRegressor):
     """
