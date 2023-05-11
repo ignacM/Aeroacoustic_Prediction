@@ -4,7 +4,7 @@ from sklearn import preprocessing
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import scale
 from tree_search import runmodel
-from run_final_model import runTree
+from decision_tree_final import runTree
 
 from sklearn.tree import export_graphviz
 
@@ -22,8 +22,8 @@ X_polar = df_polar.iloc[:, 1:3]  # Three since we are omitting thrust
 Y_azi = df_azimuthal.iloc[:, 0]
 X_azi = df_azimuthal.iloc[:, 1:6]
 
-runTree(X_polar, Y_polar)
-#runmodel(X_azi, Y_azi)
+#runmodel(X_polar, Y_polar)
+runmodel(X_azi, Y_azi)
 
 
 

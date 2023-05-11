@@ -29,7 +29,7 @@ def dataSplit(exclude=60, scaler=MinMaxScaler()):
     # Dividing data between X and Y
     path = '..\Data\dec22\data_input.xlsx'
     # Sheet name either azi or pol
-    df = pd.read_excel(path, sheet_name='azi')
+    df = pd.read_excel(path, sheet_name='pol')
     # minimum = min(df['db'])
     # maximum = max(df['db'])
 

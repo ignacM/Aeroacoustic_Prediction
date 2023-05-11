@@ -12,7 +12,7 @@ from skopt import gp_minimize
 from skopt import space
 from skopt.utils import use_named_args
 
-from src.functions.regression_eval import print_test_vs_real, print_regression_residuals, plot_regression_outcome, r2
+from src.functions.regression_eval import print_test_vs_real, print_regression_residuals, plot_regression_outcome
 from train_test_split import dataSplit, deNormalize
 
 
@@ -90,7 +90,6 @@ if __name__ == '__main__':
         test_error = mae(y_test, ypred_test)
         print('Train loss is:', train_error)
         print('Test loss is:', test_error)
-        r2(y_train, ypred_train, 'GPR')
         return y_test, ypred, regressor
 
     y_test, ypred, final_model = compare_trends(x_train, y_train, x_test, y_test)

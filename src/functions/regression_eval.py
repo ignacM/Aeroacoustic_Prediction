@@ -67,18 +67,14 @@ def plot_regression_outcome(ytest, ypred, method):
     plt.suptitle('Predicted vs Actual for %s' % method, fontweight="bold", fontsize=15)
     error_value = round(metrics.mean_absolute_error(ytest, ypred), 2)
     plt.subplot()
-    plt.grid(visible=None)
     sns.regplot(x=ytest, y=ypred, fit_reg=True, color='red')  # fit_reg prints the area
     sns.regplot(x=ytest, y=ytest, fit_reg=True, color='black')
-    """plt.legend(["Prediction points", "Prediction best fit", "Confidence Interval", "Actual point", "Actual line"],
-               fancybox=True, shadow=True)"""
+    plt.legend(["Prediction points", "Prediction best fit", "Confidence Interval", "Actual point", "Actual line"],
+               fancybox=True, shadow=True)
     plt.xlabel("Real value")
     plt.ylabel("Predicted value")
-    # plt.title("Mean absolute error: %.2f" % error_value)
-    plt.grid(False)
-    ax.spines['right'].set_visible(False)
-    ax.spines['top'].set_visible(False)
-
+    plt.title("Mean absolute error: %.2f" % error_value)
+    plt.grid(True)
     plt.show()
 
     # Evaluation metrics
@@ -201,7 +197,7 @@ def print_predictions(y_pred, ypred_labels):
     plt.xlabel('Microphone number')
     plt.ylabel('Sound Pressure Level, dB')
     plt.legend(ypred_labels)
-
+    plt.grid(True)
     plt.show()
 
 

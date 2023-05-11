@@ -1,18 +1,25 @@
+import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sns
 import numpy as np
-from sklearn import model_selection
+from sklearn import metrics, linear_model, ensemble, model_selection
+from sklearn.linear_model import Ridge
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeRegressor
-from sklearn.model_selection import GridSearchCV
+from sklearn.model_selection import RandomizedSearchCV, GridSearchCV
+from sklearn.metrics import mean_squared_error
 from sklearn.metrics import mean_absolute_error as mae
+from sklearn.metrics import mean_squared_error, r2_score
 from sklearn.model_selection import cross_val_score
+from sklearn.pipeline import Pipeline
+from sklearn.impute import SimpleImputer
 
-from src.functions.regression_eval import print_regression_solutions, print_regression_residuals, plot_regression_outcome
+from decision_tree import print_regression_solutions, print_regression_residuals, plot_regression_outcome
 
 
 def runmodel(X, Y, model= DecisionTreeRegressor):
     """
-    Model that prints trian vs test loss for max depth, min sample split, and ccp giving user analysis.
+    Model that prints tran vs test loss for max depth, min sample split, and ccp giving user analysis.
     After, model produces the best estimator of the tree printing its parameters.
     :param X:
     :param Y:
@@ -73,7 +80,7 @@ def runmodel(X, Y, model= DecisionTreeRegressor):
         plt.show()
         return
 
-    # Find optimum test and train for given parameters
+    # FInd optimum test and train for given parameters
     parameter_loss_mae(1, 20, 1, 'max_depth')
     # Manually choose depth
     optimized_depth = int(input('What is the best depth?'))
@@ -142,7 +149,7 @@ def runmodel(X, Y, model= DecisionTreeRegressor):
             results[i], train_errors[i], test_errors[i] = mae_scores({optimizable: i/100,
                                                                       'max_depth': param1,
                                                                       'min_samples_split': param2})
-        """ Plotting Parameter vs Mean Absolute Error """
+        """ Plotting Parameter vs Mean Absolute Error"""
         fig, ax = plt.subplots(figsize=(8, 6))
         plt.plot(list(results.keys()), list(results.values()))
         plt.title("%s vs MAE" % optimizable, fontweight="bold", fontsize=25)

@@ -10,15 +10,14 @@ from functions import regression_eval as reval
 if __name__ == '__main__':
 
     # Load model:
-    regressor = joblib.load('../models/SVM_regressor_azi.pkl')
+    regressor = joblib.load('../models/SVM_regressor.pkl')
     # regressor = joblib.load('../models/GPR_regressor.pkl')
     # regressor = joblib.load('../models/GBR_regressor.pkl')
     df = pd.read_csv('../Data/dec22/x_validation_nolabels.csv')
-    scaler_pol = joblib.load('../models/scaler_azi.pkl')
 
 
     # Scale data
-    scaler = scaler_pol
+    scaler = MinMaxScaler()
     df = scaler.fit_transform(df)
 
     predictions = []
