@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bd522123-228b-43e4-86a8-023a5cb99b76" name="Changes" comment="Adding comments on notebooks">
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    <list default="true" id="bd522123-228b-43e4-86a8-023a5cb99b76" name="Changes" comment="Added images on assets">
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -231,21 +231,7 @@
       <workItem from="1683120228812" duration="689000" />
       <workItem from="1683135462717" duration="7000" />
       <workItem from="1683135486604" duration="12165000" />
-      <workItem from="1683828984167" duration="9649000" />
-    </task>
-    <task id="LOCAL-00010" summary="decision_tree.py refractor">
-      <created>1675448835757</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1675448835757</updated>
-    </task>
-    <task id="LOCAL-00011" summary="decision_tree.py now includes print image of tree and actual vs real points functions">
-      <created>1675711902044</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1675711902044</updated>
+      <workItem from="1683828984167" duration="10439000" />
     </task>
     <task id="LOCAL-00012" summary="tree_search.py now optimizes depth, mss and ccp given user analysis.">
       <created>1675711990564</created>
@@ -576,7 +562,21 @@
       <option name="project" value="LOCAL" />
       <updated>1683830216228</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="Added readme with methodology and results">
+      <created>1684166399108</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1684166399108</updated>
+    </task>
+    <task id="LOCAL-00060" summary="Added images on assets">
+      <created>1684166533278</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1684166533278</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -626,8 +626,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added train_test_split.py to have a centered training data manipulation" />
-    <MESSAGE value="data_preprocessing.ipynb refactor for data visualization" />
     <MESSAGE value="n" />
     <MESSAGE value="added first working SVM regressor" />
     <MESSAGE value="gitignore data" />
@@ -651,7 +649,9 @@
     <MESSAGE value="Revert &quot;Rearranging structure&quot;&#10;&#10;This reverts commit 44c035b356d643d36ee1c4daad28fea670876b71." />
     <MESSAGE value="Rearranging structure" />
     <MESSAGE value="Adding comments on notebooks" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding comments on notebooks" />
+    <MESSAGE value="Added readme with methodology and results" />
+    <MESSAGE value="Added images on assets" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added images on assets" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Aeroacoustic_Prediction$decision_tree.coverage" NAME="decision_tree Coverage Results" MODIFIED="1670536426547" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
