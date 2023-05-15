@@ -31,7 +31,7 @@ Due to the nature of the dataset, the most defining decision was the choice of t
 Training a model involves fitting the data into a model. Both input data and real values of SPL are fed into the model. Consequently, the model tries many different combinations of its internal parameters to minimize the error between the predicted output and the real output. Each model has a different loss function that is defined from the coefficients and parameters of the model itself, and this is the function needed to be optimized. In simple terms, for a combination of parameters and coefficients (\theta), the loss function is defined as:
 
 ```math
-L(θ) = \sum_{i=1}^N  (y_p_r_e_d - y_t_r_u_e)^{2} 
+L(θ) = \sum_{i=1}^N  (y_{pred} - y_{true})^{2} 
 ```
 
 
