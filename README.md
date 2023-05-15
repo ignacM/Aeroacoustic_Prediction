@@ -41,7 +41,7 @@ The error minimises as the model identifies the trends in the input data.
 Evaluation metrics are the method to assess how good is the accuracy of the model when predicting. There are several valid ways of assessing a regression model. One common metric for regression problems is mean absolute error. This is defined as follows:
 
 ```math
-MAE =  \frac{1}{N}  \sum_N^i 1  \mid y_p_r_e_d - y_t_r_u_e \mid 
+MAE =  \frac{1}{N}  \sum_N^i 1  \mid y_{pred} - y_{true} \mid 
 ```
 
 Mean absolute error takes a sum of the absolute difference between the predicted value and the actual value for each point, and then takes the mean of it. There is not a specific number of how good the MAE might be, since it is specific to the problem. However, MAE has proved to be very useful when comparing models. This means that a model with a lower MAE makes better predictions as it has a smaller error. [Legendre et al.](https://www.researchgate.net/publication/353771519_A_machine_learning-based_methodology_for_computational_aeroacoustics_predictions_of_multi-propeller_drones) used machine learning in aid with CFD to explore aero-acoustic production from drone systems and used MAE as the main evaluation metric. This in turn influenced the decision to select MAE as the primary evaluator for testing the model performance.
