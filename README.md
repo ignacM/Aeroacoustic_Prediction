@@ -1,9 +1,11 @@
-### METHODOLOGY
-The objective of the investigation is to predict aeroacoustics data based on the dataset that was given. The data supplied was used as training data for the models, and predictions were made accordingly. The models’ parameters were tuned to minimize the error of prediction, while making the model generalized. Generalisation in machine learning happens when a model effectively predicts data from unseen diverse sources, in other words, when a model effectively learns the trends in the dataset without being constrained or overfitted by the parameters given. The complete methodology is illustrated below.
+### Aeroacoustics Prediction in a Distributed Electric Propulsion Configuration through SVMs, Gaussian Processes, and Boosted Trees
+
+The objective of the investigation is to predict aeroacoustics data based on the given dataset. The data supplied was used as training data for the models, and predictions were made accordingly. The models’ parameters were tuned to minimize the error of prediction, while making the model generalized. Generalisation in machine learning happens when a model effectively predicts data from unseen diverse sources, in other words, when a model effectively learns the trends in the dataset without being constrained or overfitted by the parameters given. The complete methodology is illustrated below.
 
 
 ![image](assets/methodology.svg)
 
+*Machine Learning Pipeline* 
 
 Model Training and Model Evaluation are an iterative process since they are repeated in order to minimize MAE and to match the training and test R2 scores. Model Optimisation is explained in the following section, as it is part of the Experimental Design. It could be implied that the models are optimised once they perform accurate predictions on the test data. Then, the validation data can be used in the model to verify the model’s ability to generalize well on unseen data. In cases where the model does not make good predictions on the validation data, then the model training and optimizing parameters have to be redefined.
 
@@ -13,15 +15,14 @@ The [G2TRC](https://www.nottingham.ac.uk/research/groups/gas-turbine-and-transmi
 
 ![image](assets/microphone_array_silentprop.png)
 
-Figure: Polar array experimental design, from Silent-Prop.
+*Polar array experimental design, from Silent-Prop*
 
 The array was placed 165 mm away from the top of the blades. Two different configurations were explored. The polar array consisted in placing the arc perpendicular to the axis of rotation of the blade. In the azimuthal array the arc of the microphones was rotated 90 degrees. This means that the arc would be placed along the plane of rotation of the propellers, having microphone number 12 just in the middle of the propellers. These microphones took the readings of SPL in each simulation. The datapoints for polar array and azimuthal array are displayed in the figure below. 
 
- ![image](assets/polar_array.png) 
-
+ ![image](assets/polar_array.png)
  ![image](assets/azimuthal_array.png)
 
-Figure: Polar array (top) and Azimuthal array (bottom) sound pressure level distribution by phase angle.
+*Polar array (top) and Azimuthal array (bottom) sound pressure level distribution by phase angle.*
 
 ### Data Pre-processing
 This process involved manipulating the dataset to ensure that the models can identify the trends within the features. Different techniques were used to optimize the dataset for each model in order to maximize the prediction power of the models. A crucial step in data pre-processing is feature selection, in other words, selecting the features that will be used for training. Moreover, it should be noted that the features that are inputted in the model for training must match the features that will be used when generating predictions. If microphone number and phase angle are the features used in model training, then both features should be given when predicting an SPL value. The features available were narrowed down into microphone number and phase angle. Microphone number was firstly scaled to degrees, between 45º and 155º, as shown in the figure below.
@@ -33,7 +34,6 @@ Training a model involves fitting the data into a model. Both input data and rea
 ```math
 L(θ) = \sum_{i=1}^N  (y_{pred} - y_{true})^{2} 
 ```
-
 
 The error minimises as the model identifies the trends in the input data.
 
@@ -51,14 +51,13 @@ Additionally, the correlation of determination R2 can be used to measure the tra
 ### Model Validation
 Once a model has satisfied the requirements set in model evaluation, it can be applied for prediction generation. The [G2TRC](https://www.nottingham.ac.uk/research/groups/gas-turbine-and-transmissions-centre/contact.aspx) supplied the data used for validation, which consisted of polar and azimuthal array SPL values for blade phase angle at 22.5º and 82.5º. Those SPL values were gathered using the same high-fidelity software as before. The models that have been optimized were used to predict the aeroacoustics generation. Similarly, as in model evaluation, the evaluation metrics of these predictions will be produced to analyse how generalisable the model is.
 
-
 ### Results
 After model optimisation was completed, each model was tested on unseen data. This data was inputted into each model to test the performance of each model. The figure below displays the predictions of noise generated in a polar array of two propellers with a phase angle of 22.5º and 82.5º. 
 
 ![image](assets/results_poli_22.png)
 ![image](assets/results_poli_82.png)
 
-Figure: Polar array predictions for blade phase angle of 22.5º (top) and 82.5º (bottom) 
+*Polar array predictions for blade phase angle of 22.5º (top) and 82.5º (bottom)* 
 
 The three models were compared against the real data in both cases. The chosen phase angle of 22.5º is close to the boundaries of the trained data used by the model. While GPR and GBR do not produce very accurate trendlines, SVM severely underperforms. Even though the SVM is able to represent the trend accurately, it had failed to capture the magnitude of the prediction. On the other hand, GPR effectively captures the prediction of the model for initial microphone points, but increasingly loses accuracy and deviates from real data after microphone 10. The GBR model effectively captures the trend of the data, and represents the magnitude of the data, but does not produce a smooth line.
 Similarly, predictions were made for the azimuthal array, indicated below.
@@ -66,7 +65,15 @@ Similarly, predictions were made for the azimuthal array, indicated below.
 ![image](assets/results_azi_22.png)
 ![image](assets/results_azi_82.png)
 
-Figure: Azimuthal array predictions for blade phase angle of 22.5º (top) and 82.5º (bottom)
+*Azimuthal array predictions for blade phase angle of 22.5º (top) and 82.5º (bottom)*
 
 Conveniently, the SVM captured the trend well on the low blade phase angle but failed to capture the magnitude well. Both GPR and GBR models captured the trend as well but failed on adjusting the magnitude of the SPL. Additionally, the GBR prediction at Microphone 1 deviates for almost 0.50 dB. The GBR has notably been proven to be the worse model for predicting the array of the azimuthal array at 22.5º.
 Predicting sound at 82.5º in the azimuthal array gives the worst results. Even though the GBR captures the trend, it has been shifted 5 microphones to the right. The GPR model severely underperforms as it fails to capture the magnitude of the SPL output, by almost 1.0 dB. Analogously to the polar array, the SVM is the best model for capturing both trend and magnitude of the prediction at 82.5º. The SVM has, however, overpredicted the SPL value for microphones 7-11. As seen above, the azimuthal array is much noisier compared to the polar array, and this led to an overall worse performance for every model.
+
+From the models that have been gathered, possible predictions for other phase angles can be made, but have not been validated. The best performing models for both polar and azimuthal array have been selected for predicting the data. The figure below displays the unvalidated data prediction for multiple phase angles.
+
+![image](assets/polar_array_predictions.png)
+![image](assets/azimuthal_array_predictions.png)
+
+*Predicted data for Polar array (top) and Azimuthal array (bottom)*
+
