@@ -77,3 +77,7 @@ From the models that have been gathered, possible predictions for other phase an
 
 *Predicted data for Polar array (top) and Azimuthal array (bottom)*
 
+### Conclusion
+
+The investigation demonstrates that machine learning can effectively predict aeroacoustics under certain conditions in the NASA X-57 Maxwell. Given the high resolution of the dataset, accurate predictions of aeroacoustics trendlines could be computed. Support Vector Machines for regression are more reliable and more robust for predicting trends in SPL generation compared to Gaussian Process Regressors or Boosted Trees. In contrast, Boosted Trees were more likely to overfit and provide worse predictions. Due to the nature of its algorithm, boosted trees generated sparse predictions compared to SVMs or GPRs, which produce smoother fits. Gaussian Process Regressors can be utilized for effectively predicting the trend of datasets but fail at producing the magnitude of the SPL accurately. SVMs performed the best in predicting both magnitude and trend when the predicted datapoint was not close to the data boundary. The study revealed that ML can be used for generating baseline predictions of aeroacoustics and can accelerate the data collection process for estimating noise. 
+
