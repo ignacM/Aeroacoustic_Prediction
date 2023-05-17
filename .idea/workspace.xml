@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bd522123-228b-43e4-86a8-023a5cb99b76" name="Changes" comment="Added images on assets">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-    </list>
+    <list default="true" id="bd522123-228b-43e4-86a8-023a5cb99b76" name="Changes" comment="Readme conclusion" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,22 +47,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/ignac/PycharmProjects/introtodeeplearning",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ignac/PycharmProjects/introtodeeplearning&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\ignac\PycharmProjects\Aeroacoustic_Prediction\src" />
@@ -79,7 +77,7 @@
       <recent name="C:\Users\ignac\PycharmProjects\Aeroacoustic_Prediction\src" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.SVR">
     <configuration name="SVR" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="pythonProject2" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -231,49 +229,7 @@
       <workItem from="1683120228812" duration="689000" />
       <workItem from="1683135462717" duration="7000" />
       <workItem from="1683135486604" duration="12165000" />
-      <workItem from="1683828984167" duration="10439000" />
-    </task>
-    <task id="LOCAL-00012" summary="tree_search.py now optimizes depth, mss and ccp given user analysis.">
-      <created>1675711990564</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1675711990564</updated>
-    </task>
-    <task id="LOCAL-00013" summary="decision_tree_final.py refractor for code optimization using imported frunctions from decision_tree">
-      <created>1675712035768</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1675712035768</updated>
-    </task>
-    <task id="LOCAL-00014" summary="added 2versions of raw data and combined data which contains first and second collected dataset">
-      <created>1675790760514</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1675790760514</updated>
-    </task>
-    <task id="LOCAL-00015" summary="tree_search.py refractor for an easier parameter selection input by user">
-      <created>1675790832973</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1675790832973</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Run_model.py now runs all the dataset. It also compares prediction of real vs predicted dB values by excluding a blade angle. Run_individual_array.py partial data.">
-      <created>1675790923324</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1675790923324</updated>
-    </task>
-    <task id="LOCAL-00017" summary="refractor">
-      <created>1675790982084</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1675790982084</updated>
+      <workItem from="1683828984167" duration="12852000" />
     </task>
     <task id="LOCAL-00018" summary="added read.md in Data folder to explain assumptions in data calculations">
       <created>1675791096192</created>
@@ -576,7 +532,49 @@
       <option name="project" value="LOCAL" />
       <updated>1684166533278</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="Readme equation rewriting">
+      <created>1684167619077</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1684167619077</updated>
+    </task>
+    <task id="LOCAL-00062" summary="Readme equation rewriting">
+      <created>1684167778744</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1684167778744</updated>
+    </task>
+    <task id="LOCAL-00063" summary="Readme equation rewriting">
+      <created>1684167837049</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1684167837049</updated>
+    </task>
+    <task id="LOCAL-00064" summary="Readme equation rewriting">
+      <created>1684167906373</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1684167906373</updated>
+    </task>
+    <task id="LOCAL-00065" summary="Readme reformatting">
+      <created>1684168713262</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1684168713262</updated>
+    </task>
+    <task id="LOCAL-00066" summary="Readme conclusion">
+      <created>1684226835471</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1684226835471</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -626,9 +624,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="n" />
-    <MESSAGE value="added first working SVM regressor" />
-    <MESSAGE value="gitignore data" />
     <MESSAGE value="created x_validation dataset" />
     <MESSAGE value="updated files to use logarithmic scale on predicted Y instead of MinMax to reduce MAE by 25%" />
     <MESSAGE value="Created validation x_val data and plot graphs of predictions" />
@@ -651,7 +646,10 @@
     <MESSAGE value="Adding comments on notebooks" />
     <MESSAGE value="Added readme with methodology and results" />
     <MESSAGE value="Added images on assets" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added images on assets" />
+    <MESSAGE value="Readme equation rewriting" />
+    <MESSAGE value="Readme reformatting" />
+    <MESSAGE value="Readme conclusion" />
+    <option name="LAST_COMMIT_MESSAGE" value="Readme conclusion" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Aeroacoustic_Prediction$decision_tree.coverage" NAME="decision_tree Coverage Results" MODIFIED="1670536426547" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
